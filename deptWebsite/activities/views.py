@@ -16,6 +16,7 @@ def activities(request):
 
 
 def activity_detail(request,id):
+    print(request.site)
     activity =get_object_or_404(Activity,id=id)
     data = {
         "activity": activity,
