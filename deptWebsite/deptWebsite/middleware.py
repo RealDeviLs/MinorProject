@@ -19,9 +19,8 @@ class SiteMiddleware(object):
         response = self.get_response(request)
         return response
 
-        
+
     def process_request(self, request):
-        print("eteje")
         try:
             current_site = Site.objects.get(domain=request.get_host())
         except Site.DoesNotExist:
