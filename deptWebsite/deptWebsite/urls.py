@@ -25,6 +25,7 @@ urlpatterns = [
     path("activities/",include("activities.urls")),
     path('infra/',include("infra.urls")),
     path("whitelabel/",include("whitelabel.urls")),
+    path("students/",include("students.urls")),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

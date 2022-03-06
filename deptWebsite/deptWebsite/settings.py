@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "infra",
     "whitelabel",
     "phonenumber_field",
+    "students",
     'slippers',
     
 ]
