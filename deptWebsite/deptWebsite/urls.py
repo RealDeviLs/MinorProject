@@ -22,8 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",include("home.urls")),
     path("faculty/",include("faculty.urls")),
-    path("infrastructure/",include("infrastructure.urls")),
     path("activities/",include("activities.urls")),
+    path('infra/',include("infra.urls")),
+    path("whitelabel/",include("whitelabel.urls")),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns +=  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
