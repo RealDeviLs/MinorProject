@@ -18,7 +18,7 @@ intern_types = (
     ("summer","summer"),
     ("six_months","six months")
 )
-class Iternship(models.Model):
+class Internship(models.Model):
     company = models.CharField(max_length=200)
     role = models.CharField(max_length=200)
     stipend = models.IntegerField()
