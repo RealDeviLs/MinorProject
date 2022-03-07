@@ -33,3 +33,12 @@ class SocietyClub(models.Model):
     def __str__ (self) ->str:
         return f"{self.dept.department.name} : {self.title}"
         
+class HeroPhotos(models.Model):
+    image = models.ImageField(upload_to="HeroPhotos")
+
+    dept = models.ForeignKey(WhiteLabel,on_delete = models.CASCADE,related_name="photos")
+
+
+    def __str__(self):
+        return f"{self.department.title} {self.pk}" 
+

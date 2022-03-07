@@ -18,12 +18,3 @@ class DeptNews(models.Model):
         return self.title
 
 
-class HeroPhotos(models.Model):
-    image = models.ImageField(upload_to="HeroPhotos")
-
-    department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="heroPhotos")
-    on_site = CurrentSiteManager("department")
-
-    def __str__(self):
-        return f"{self.department.title} {self.pk}" 
-
