@@ -19,8 +19,8 @@ class Activity(models.Model):
     date_from = models.DateField()
     date_to = models.DateField(blank=True,null=True)
     cover_Image = models.ImageField(upload_to='activities')
-    activity_type = models.CharField(max_length=200,choices=type_choices)
-    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="activities")
+    activity_type = models.CharField(max_length=200,choices=type_choices,null=True)
+    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="activities",null=True)
     on_site = CurrentSiteManager("department")
     def __str__(self):
         return f"{self.department.name}  {self.title}"

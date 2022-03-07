@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
 from phonenumber_field.modelfields import PhoneNumberField
+from students.models import Student
 # Create your models here.
 
 
@@ -41,7 +42,7 @@ class Publication(models.Model):
     publisher = models.CharField(max_length=200)
     citations = models.IntegerField(default=0,null=True) 
     url = models.URLField(null=True,blank=True)
-    publication_type = models.CharField(max_length=200, choices = publication_types)
+    publication_type = models.CharField(max_length=200, null=True,choices = publication_types)
     person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="publicaions")
 
     def __str__(self) -> str :
@@ -72,7 +73,7 @@ event_types = (
 
 class Event(models.Model):
     category = models.CharField(max_length=200)
-    event_type = models.CharField(max_length=200, choices = event_types)
+    event_type = models.CharField(max_length=200,null=True, choices = event_types)
     title = models.CharField(max_length=500)
     venue = models.CharField(max_length=200)
     date_start = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -93,7 +94,13 @@ class Affilation(models.Model):
         return f"{self.person.department.name} : {self.person.name} : {self.designation}"
 
 
-# for PHD and PG make a PHD scholar/PG person first and then link by a FK
+# for PHD and PG make a PHD scholar/PG person first and then link by a FK,
+
+class Scholar(Student):
+    research_title = models.CharField(max_length=500)
+    research_description = models.TextField()
+    faculty = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="phd_scholars")
+
 
 class Patent(models.Model):
     title = models.CharField(max_length=200)

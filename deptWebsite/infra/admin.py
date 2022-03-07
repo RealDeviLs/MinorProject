@@ -3,5 +3,12 @@ from .models import Infra,InfraImage
 # Register your models here.
 
 
-admin.site.register(Infra)
-admin.site.register(InfraImage)
+class InfraImageInline(admin.StackedInline):
+    model = InfraImage
+
+@admin.register(Infra)
+class InfraAdmin(admin.ModelAdmin):
+    inlines = InfraImageInline,
+
+    class Meta:
+        model = Infra

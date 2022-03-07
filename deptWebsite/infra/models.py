@@ -16,8 +16,8 @@ class Infra(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
-    infra_type = models.CharField(max_length=200,choices=infra_type_choices)
-    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="infra")
+    infra_type = models.CharField(max_length=200,null=True,choices=infra_type_choices)
+    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="infra",null=True)
     on_site = CurrentSiteManager("department")
     def __str__(self):
 
