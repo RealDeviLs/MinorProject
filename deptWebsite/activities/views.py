@@ -6,8 +6,7 @@ from django.shortcuts import get_object_or_404
 
 
 def activities(request):
-    activities = Activity.objects.all()
-
+    activities = Activity.on_site.all()
     data = {
         "activities":activities
     }
