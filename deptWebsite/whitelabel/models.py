@@ -18,7 +18,7 @@ class WhiteLabel(models.Model):
     youtube = models.URLField(null=True, blank=True)
     hod = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,null=True)
     hod_message = models.TextField(null=True, blank=True)
-    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="whitelabel",null=True)
+    department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="whitelabel",null=True)
     on_site = CurrentSiteManager("department")
 
     def __str__ (self):

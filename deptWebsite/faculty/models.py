@@ -15,7 +15,7 @@ class DeptPerson(models.Model):
     phone = PhoneNumberField(null=True, blank=True)
     email =  models.EmailField()
     research_profile = models.TextField()
-    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="person")
+    department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="person")
     on_site = CurrentSiteManager("department")
 
 

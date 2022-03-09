@@ -9,7 +9,7 @@ class AcademicProgram(models.Model):
     title = models.CharField(max_length=200)
     curriculum = models.FileField(upload_to="curriculum")
     program_outcomes = models.TextField(blank=True)
-    department = models.OneToOneField(Site,on_delete= models.CASCADE,related_name="academic_programmes")
+    department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="academic_programmes")
     on_site = CurrentSiteManager("department")
     def __str__(self) -> str:
         return f"{self.department.name} : {self.title}"
