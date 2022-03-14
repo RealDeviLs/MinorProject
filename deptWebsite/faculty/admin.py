@@ -3,12 +3,16 @@ from turtle import mode
 from django.contrib import admin
 from .models import (
     DeptPerson,
-    ResearchInterests,
-    Publication,
+    ResearchInfo,
+    ProfileLinks,
+    JournalPublication,
+    ConferencePublication,
+    BookPublication,
     Project,
     Event,
     Affilation,
-    Scholar,
+    PhDSupervised,
+    PGDissertationGuided,
     Patent,
     Responsibility,
     Award,
@@ -17,13 +21,20 @@ from .models import (
 # Register your models here.
 
 
-class ResearchInterestsInline(admin.StackedInline):
-    model = ResearchInterests
+class ResearchInfoInline(admin.StackedInline):
+    model = ResearchInfo
 
+class ProfileLinksInline(admin.StackedInline):
+    model = ProfileLinks
 
-class PublicationInline(admin.StackedInline):
-    model = Publication
+class JournalPublicationInline(admin.StackedInline):
+    model = JournalPublication
 
+class ConferencePublicationInline(admin.StackedInline):
+    model = ConferencePublication
+
+class BookPublicationInline(admin.StackedInline):
+    model = BookPublication
 
 class ProjectInline(admin.StackedInline):
     model = Project
@@ -37,9 +48,11 @@ class AffilationInline(admin.StackedInline):
     model = Affilation
 
 
-class ScholarInline(admin.StackedInline):
-    model = Scholar
+class PhDSupervisedInline(admin.StackedInline):
+    model = PhDSupervised
 
+class PGDissertationGuidedInline(admin.StackedInline):
+    model = PGDissertationGuided
 
 class PatentInline(admin.StackedInline):
     model = Patent
@@ -56,11 +69,15 @@ class AwardInline(admin.StackedInline):
 @admin.register(DeptPerson)
 class DeptPersonAdmin(admin.ModelAdmin):
     inlines = [
-        ResearchInterestsInline,
-        PublicationInline,
+        ResearchInfoInline,
+        ProfileLinksInline,
+        JournalPublicationInline,
+        ConferencePublicationInline,
+        BookPublicationInline,
         EventInline,
         AffilationInline,
-        ScholarInline,
+        PhDSupervisedInline,
+        PGDissertationGuidedInline,
         PatentInline,
         ResponsibilityInline,
         AwardInline,

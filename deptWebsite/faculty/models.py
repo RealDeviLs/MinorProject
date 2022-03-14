@@ -3,6 +3,8 @@ from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
 from phonenumber_field.modelfields import PhoneNumberField
 from students.models import Student
+from tinymce.models import HTMLField 
+
 # Create your models here.
 
 
@@ -14,7 +16,8 @@ class DeptPerson(models.Model):
     address = models.TextField()
     phone = PhoneNumberField(null=True, blank=True)
     email =  models.EmailField()
-    research_profile = models.TextField()
+    image = models.ImageField(upload_to="department_persons")
+    research_profile = models.CharField(max_length=200)
     department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="person")
     on_site = CurrentSiteManager("department")
 
@@ -22,33 +25,44 @@ class DeptPerson(models.Model):
     def __str__(self) ->str :
         return f"{self.department.name} :{self.name}"
 
-class ResearchInterests(models.Model):
-    interest = models.CharField(max_length=200)
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="interests")
+class ResearchInfo(models.Model):
+    content = HTMLField()
+    person = models.OneToOneField(DeptPerson,on_delete = models.CASCADE,related_name="research_info")
+
+class ProfileLinks(models.Model):
+    content = HTMLField()
+    person = models.OneToOneField(DeptPerson,on_delete = models.CASCADE,related_name="profile_links")
+
+
+class JournalPublication(models.Model):
+    description = models.TextField()
+    journal = models.CharField(max_length=200)
+    date = models.IntegerField()
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="journal_publicaions")
 
     def __str__(self) -> str :
-        return f"{self.person.department.name} : {self.person.name} : {self.interest}"
+        return f"{self.person.department.name} : {self.person.name} : {self.journal}"
 
-publication_types = (
-    ("book/chapter","book/chapter"),
-    ("journal","journal"),
-    ("conference","conference"),
-)
-class Publication(models.Model):
-    title = models.TextField()
+class ConferencePublication(models.Model):
     description = models.TextField()
+    conference = models.CharField(max_length=200)
     date = models.IntegerField()
-    co_authors = models.TextField(null=True)
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="conference_publicaions")
+
+    def __str__(self) -> str :
+        return f"{self.person.department.name} : {self.person.name} : {self.conference}"
+
+class BookPublication(models.Model):
+    book_type = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     publisher = models.CharField(max_length=200)
-    citations = models.IntegerField(default=0,null=True) 
-    url = models.URLField(null=True,blank=True)
-    publication_type = models.CharField(max_length=200, null=True,choices = publication_types)
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="publicaions")
+    authors = models.CharField(max_length=200)
+    isbn_or_issn = models.IntegerField()
+    date = models.IntegerField()
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="book_publicaions")
 
     def __str__(self) -> str :
         return f"{self.person.department.name} : {self.person.name} : {self.title}"
-
-
 
 class Project(models.Model):
     role = models.CharField(max_length=200)
@@ -96,11 +110,21 @@ class Affilation(models.Model):
 
 # for PHD and PG make a PHD scholar/PG person first and then link by a FK,
 
-class Scholar(Student):
-    research_title = models.CharField(max_length=500)
-    research_description = models.TextField()
-    faculty = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="phd_scholars")
+class PhDSupervised(Student):
+    research_topic = models.CharField(max_length=500)
+    scholar_name = models.CharField(max_length=200)
+    person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="phd_scholars")
+    status = models.CharField(max_length=200)
+    date = models.IntegerField()
+    co_superviser = models.CharField(max_length=200)
 
+class PGDissertationGuided(Student):
+    dissertation_title = models.CharField(max_length=500)
+    student_name = models.CharField(max_length=200)
+    person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="pg_students")
+    status = models.CharField(max_length=200)
+    date = models.IntegerField()
+    co_superviser = models.CharField(max_length=200)
 
 class Patent(models.Model):
     title = models.CharField(max_length=200)
@@ -129,7 +153,6 @@ class Award(models.Model):
     activity = models.CharField(max_length=200)
     given_by = models.CharField(max_length=200)
     year = models.IntegerField(null=True, blank=True)
-
     person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="awards")
 
     def __str__(self) -> str :
