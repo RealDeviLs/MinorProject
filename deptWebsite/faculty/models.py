@@ -38,7 +38,7 @@ class JournalPublication(models.Model):
     description = models.TextField()
     journal = models.CharField(max_length=200)
     date = models.IntegerField()
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="journal_publicaions")
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="journal_publications")
 
     def __str__(self) -> str :
         return f"{self.person.department.name} : {self.person.name} : {self.journal}"
@@ -47,7 +47,7 @@ class ConferencePublication(models.Model):
     description = models.TextField()
     conference = models.CharField(max_length=200)
     date = models.IntegerField()
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="conference_publicaions")
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="conference_publications")
 
     def __str__(self) -> str :
         return f"{self.person.department.name} : {self.person.name} : {self.conference}"
@@ -59,7 +59,7 @@ class BookPublication(models.Model):
     authors = models.CharField(max_length=200)
     isbn_or_issn = models.IntegerField()
     date = models.IntegerField()
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="book_publicaions")
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="book_publications")
 
     def __str__(self) -> str :
         return f"{self.person.department.name} : {self.person.name} : {self.title}"
@@ -90,8 +90,8 @@ class Event(models.Model):
     event_type = models.CharField(max_length=200,null=True, choices = event_types)
     title = models.CharField(max_length=500)
     venue = models.CharField(max_length=200)
-    date_start = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    date_end = models.DateTimeField(auto_now=True, blank=True)
+    date_start = models.DateTimeField( blank=True, null=True)
+    date_end = models.DateTimeField(blank=True, null=True)
     designation = models.CharField(max_length=200)
 
     person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="events")
@@ -112,7 +112,6 @@ class Affilation(models.Model):
 
 class PhDSupervised(Student):
     research_topic = models.CharField(max_length=500)
-    scholar_name = models.CharField(max_length=200)
     person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="phd_scholars")
     status = models.CharField(max_length=200)
     date = models.IntegerField()
@@ -124,7 +123,7 @@ class PGDissertationGuided(Student):
     person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="pg_students")
     status = models.CharField(max_length=200)
     date = models.IntegerField()
-    co_superviser = models.CharField(max_length=200)
+    co_superviser = models.CharField(max_length=200,null=True, blank=True)
 
 class Patent(models.Model):
     title = models.CharField(max_length=200)

@@ -74,6 +74,7 @@ class DeptPersonAdmin(admin.ModelAdmin):
         JournalPublicationInline,
         ConferencePublicationInline,
         BookPublicationInline,
+        ProjectInline,
         EventInline,
         AffilationInline,
         PhDSupervisedInline,
