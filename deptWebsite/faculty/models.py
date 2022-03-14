@@ -69,7 +69,7 @@ class Project(models.Model):
     title = models.CharField(max_length =500)
     project_type = models.CharField(max_length=200)
     funding_agency = models.CharField(max_length=200)
-    date_start = models.DateField(null=True, blank=True,auto_now_add=True)
+    date_start = models.DateField(null=True, blank=True)
     date_end = models.DateField(null=True, blank=True)
     amount = models.IntegerField(null=True, blank=True)
     status = models.CharField(max_length=200)
