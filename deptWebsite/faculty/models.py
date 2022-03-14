@@ -67,7 +67,6 @@ class BookPublication(models.Model):
 class Project(models.Model):
     role = models.CharField(max_length=200)
     title = models.CharField(max_length =500)
-    description = models.TextField()
     project_type = models.CharField(max_length=200)
     funding_agency = models.CharField(max_length=200)
     date_start = models.DateField(null=True, blank=True,auto_now_add=True)
