@@ -21,8 +21,10 @@ def faculty_detail(request,id):
     research_projects = profile.projects.all()
     events = profile.events.all()
     affilations = profile.affilations.all()
-    # phd_scholars = profile.phd_scholars.all()
-    # pg_students = profile.pg_students.all()
+    phd_scholars = profile.phd_scholars.all()
+    pg_students = profile.pg_students.all()
+    patents = profile.patents.all()
+    responsibilities = profile.responsibilities.all()
     data = {
         "profile": profile,
         "profile_links": profile_links,
@@ -33,7 +35,10 @@ def faculty_detail(request,id):
         "research_projects": research_projects,
         "events": events,
         "affilations": affilations,
-        # "phd_scholars": phd_scholars,
-        # "pg_students": pg_students,
+        "phd_scholars": phd_scholars,
+        "pg_students": pg_students,
+        "patents": patents,
+        "responsibilities": responsibilities,
+        "awards": profile.awards.all()
     }
     return render(request, template_name='profile.html',context =data)

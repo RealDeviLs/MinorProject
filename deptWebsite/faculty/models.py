@@ -109,14 +109,15 @@ class Affilation(models.Model):
 
 # for PHD and PG make a PHD scholar/PG person first and then link by a FK,
 
-class PhDSupervised(Student):
+class PhDSupervised(models.Model):
     research_topic = models.CharField(max_length=500)
+    student_name = models.CharField(max_length=200)
     person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="phd_scholars")
     status = models.CharField(max_length=200)
     date = models.IntegerField()
     co_superviser = models.CharField(max_length=200)
 
-class PGDissertationGuided(Student):
+class PGDissertationGuided(models.Model):
     dissertation_title = models.CharField(max_length=500)
     student_name = models.CharField(max_length=200)
     person = models.ForeignKey(DeptPerson,on_delete=models.CASCADE,related_name="pg_students")
@@ -141,7 +142,7 @@ class Responsibility(models.Model):
     organization = models.CharField(max_length=200)
     date_start = models.DateField(null=True, blank=True)
     date_end = models.DateField(null=True, blank=True)
-    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="responsiblities")
+    person = models.ForeignKey(DeptPerson,on_delete = models.CASCADE,related_name="responsibilities")
 
     def __str__(self) -> str :
         return f"{self.person.department.name} : {self.person.name} : {self.title}"

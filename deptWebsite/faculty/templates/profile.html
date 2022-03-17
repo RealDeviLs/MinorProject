@@ -355,23 +355,7 @@
                               d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
                               clip-rule="evenodd" />
                           </svg>
-                          <span class="ml-2 flex-1 w-0 truncate"> resume_front_end_developer.pdf </span>
-                        </div>
-                        <div class="ml-4 flex-shrink-0">
-                          <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
-                        </div>
-                      </li>
-
-                      <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div class="w-0 flex-1 flex items-center">
-                          <!-- Heroicon name: solid/paper-clip -->
-                          <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                              d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          <span class="ml-2 flex-1 w-0 truncate"> coverletter_front_end_developer.pdf </span>
+                          <span class="ml-2 flex-1 w-0 truncate"> profile.pdf </span>
                         </div>
                         <div class="ml-4 flex-shrink-0">
                           <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
@@ -781,20 +765,21 @@
                               </thead>
                               <tbody>
                                 <!-- Odd row -->
-                                <!-- {% for i in phd_scholars %}
+                                {% for i in phd_scholars %}
                                 <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.name}}
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{i.student_name}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.research_topic}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.year}}
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_supervisor}}
                                   </td>
                                 </tr>
-                                {% endfor %} -->
+                                {% endfor %}
                                 <!-- Even row -->
                                 <!-- More people... -->
                               </tbody>
@@ -835,20 +820,21 @@
                               </thead>
                               <tbody>
                                 <!-- Odd row -->
-                                <!-- {% for i in pg_students %}
+                                {% for i in pg_students %}
                                 <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.name}}
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{i.student_name}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.dissertation_title}}
                                   </td>
                                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.year}}
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_supervisor}}
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_superviser}}
                                   </td>
                                 </tr>
-                                {% endfor %} -->
+                                {% endfor %}
                                 <!-- Even row -->
                                 <!-- More people... -->
                               </tbody>
@@ -890,32 +876,20 @@
                               </thead>
                               <tbody>
                                 <!-- Odd row -->
+                                {% for i in patents %}
                                 <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jane Cooper
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.title}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regional Paradigm
-                                    Technician</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.reg_no}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.organization}}
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
                                   </td>
                                 </tr>
-
-                                <!-- Even row -->
-                                <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cody Fisher
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Product Directives
-                                    Officer</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                </tr>
+                                {% endfor %}
                                 <!-- More people... -->
                               </tbody>
                             </table>
@@ -952,27 +926,17 @@
                               <tbody>
                                 <!-- Odd row -->
                                 <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jane Cooper
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {{i.position}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regional Paradigm
-                                    Technician</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.organization}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_start}}
+                                  </td>
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_end}}
                                   </td>
                                 </tr>
 
-                                <!-- Even row -->
-                                <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cody Fisher
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Product Directives
-                                    Officer</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                </tr>
                                 <!-- More people... -->
                               </tbody>
                             </table>
@@ -1008,28 +972,18 @@
                               </thead>
                               <tbody>
                                 <!-- Odd row -->
+                                {% for i in awards %}
                                 <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Jane Cooper
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.title}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regional Paradigm
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.activity}}
                                     Technician</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.given_by}}
                                   </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">jane.cooper@example.com
-                                  </td>
-                                </tr>
-
-                                <!-- Even row -->
-                                <tr class="bg-gray-50">
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cody Fisher
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Product Directives
-                                    Officer</td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
-                                  </td>
-                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">cody.fisher@example.com
+                                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.year}}
                                   </td>
                                 </tr>
+                                {% endfor %}
                                 <!-- More people... -->
                               </tbody>
                             </table>
