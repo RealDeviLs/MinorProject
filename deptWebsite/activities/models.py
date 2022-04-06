@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.sites.managers import CurrentSiteManager
 from django.contrib.sites.models import Site
+from tinymce.models import HTMLField 
+
 # Create your models here.
 
 type_choices  = (
@@ -15,7 +17,7 @@ type_choices  = (
 class Activity(models.Model):
     title = models.CharField(max_length=600)
     domain = models.CharField(max_length=800)
-    details = models.TextField()
+    details = HTMLField()
     date_from = models.DateField()
     date_to = models.DateField(blank=True,null=True)
     cover_Image = models.ImageField(upload_to='activities')

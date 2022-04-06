@@ -4,7 +4,7 @@ from .models import Infra,InfraImage
 
 
 def infra(request):
-    infra = Infra.objects.all() 
+    infra = Infra.on_site.all() 
     data ={
         "infra": infra
     }

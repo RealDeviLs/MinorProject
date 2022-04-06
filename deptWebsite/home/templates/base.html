@@ -57,25 +57,24 @@
           </div>
           <div class="hidden md:ml-6 md:flex md:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <a href="#"
+            <a href="{% url 'home' %}"
               class="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Dashboard </a>
-            <a href="#"
+              Home </a>
+            <a href="{% url 'faculty_page' %}"
               class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Team </a>
-            <a href="#"
+              Faculty </a>
+            <a href="{% url 'infra' %}"
               class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Projects </a>
-            <a href="#"
+              Infrastructure </a>
+            <a href="{% url 'activities' %}"
               class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-              Calendar </a>
+              Activities </a>
           </div>
         </div>
-        <div class="flex items-center">
+        <!-- <div class="flex items-center">
           <div class="flex-shrink-0">
             <button type="button"
               class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              <!-- Heroicon name: solid/plus-sm -->
               <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                 aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -89,7 +88,6 @@
             <button type="button"
               class="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               <span class="sr-only">View notifications</span>
-              <!-- Heroicon name: outline/bell -->
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -97,7 +95,6 @@
               </svg>
             </button>
 
-            <!-- Profile dropdown -->
             <div class="ml-3 relative">
               <div>
                 <button type="button"
@@ -110,16 +107,7 @@
                 </button>
               </div>
 
-              <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-200"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
+           
               <div x-show="burger" , x-transition:enter="transition ease-out duration-200"
                 x-transition:enter-start="transform opacity-0 scale-95"
                 x-transition:enter-end="transform opacity-100 scale-100"
@@ -128,7 +116,6 @@
                 x-transition:leave-end="transform opacity-0 scale-95"
                 class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <!-- Active: "bg-gray-100", Not Active: "" -->
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                   id="user-menu-item-0">Your Profile</a>
                 <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
@@ -138,7 +125,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -332,22 +319,22 @@
         <div class="grid grid-cols-2 gap-8 xl:col-span-2">
           <div class="md:grid md:grid-cols-2 md:gap-8">
             <div>
-              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Solutions</h3>
+              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Quick Links</h3>
               <ul role="list" class="mt-4 space-y-4">
                 <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white"> Marketing </a>
+                  <a href="{% url 'home' %}" class="text-base text-gray-300 hover:text-white"> Home </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white"> Analytics </a>
+                  <a href="{% url 'faculty_page' %}" class="text-base text-gray-300 hover:text-white"> Faculty </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white"> Commerce </a>
+                  <a href="{% url 'infra' %}" class="text-base text-gray-300 hover:text-white"> Infrastructure </a>
                 </li>
 
                 <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white"> Insights </a>
+                  <a href="{% url 'activities' %}" class="text-base text-gray-300 hover:text-white"> Activities </a>
                 </li>
               </ul>
             </div>
