@@ -8,4 +8,8 @@ from whitelabel.models import WhiteLabel
 def home_page(request):
     print(get_current_site(request))
     print(settings.SITE_ID)
-    return render(request,template_name="index.html")
+    basic_data = WhiteLabel.on_site.first()
+    data = {
+        "basic":basic_data
+    }
+    return render(request,template_name="index.html",context = data)
