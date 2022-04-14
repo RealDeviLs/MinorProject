@@ -56,6 +56,30 @@
                 <h2 class="text-4xl font-extrabold text-white sm:text-5xl sm:tracking-tight lg:text-6xl">Our Staff</h2>
                 <p class="mt-5 text-xl text-gray-400">Start building for free, then add a site plan to go live. Account plans
                     unlock additional features.</p>
+    </div>
+    <div class="mt-10 w-full max-w-xs">
+
+
+    </div>
+  </div>
+
+
+<!-- Header ends -->
+<!-- Faculty -->
+<div class="bg-white">
+  <div class="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+    <div class="space-y-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Faculty</h2>
+
+      <ul role="list" class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0">
+        {% for i in faculty %}
+        <li>
+          <div class="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
+            <div class="h-0 aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
+              <a href="{% url 'profile' i.id %}">
+                <img class="object-cover shadow-lg rounded-lg" src="{{ i.image.url }}" alt="{{ i.name }}">
+              </a>
+
             </div>
             <div class="mt-10 w-full max-w-xs">
 
