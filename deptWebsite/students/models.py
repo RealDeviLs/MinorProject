@@ -4,15 +4,17 @@ from django.contrib.sites.models import Site
 # Create your models here.
 
 course_types = (
-    ("btech","btech"),
-    ("mtech","mtech"),
-    ("phd","phd"),
+    ("btech","Btech"),
+    ("mtech","Mtech"),
+    ("phd","Phd"),
 )
 class Student(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     batch = models.IntegerField()
     course = models.CharField(max_length=200,null=True, choices=course_types)
+    isAlumni = models.BooleanField()
+    image = models.ImageField(upload_to="students")
     department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="students")
     on_site = CurrentSiteManager("department")
 
@@ -62,4 +64,4 @@ class Project(models.Model):
     person = models.ForeignKey(Student,on_delete = models.CASCADE,related_name="projects")
 
     def __str__(self)-> str :
-        return f"{self.person.department.name} : {self.person.name} : {self.company}"
+        return f"{self.person.department.name} : {self.person.name}"
