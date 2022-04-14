@@ -29,16 +29,18 @@ repos:
   #   hooks:
   #     - id: seed-isort-config
 
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.9.1
-    hooks:
-      - id: isort
-
   - repo: https://github.com/ambv/black
     rev: 22.3.0
     hooks:
       - id: black
         language_version: python3
+
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.9.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files"]
 
 
   - repo: https://github.com/rtts/djhtml

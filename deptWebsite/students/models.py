@@ -8,7 +8,6 @@ course_types = (
     ("btech", "btech"),
     ("mtech", "mtech"),
     ("phd", "phd"),
-
 )
 
 
@@ -17,10 +16,12 @@ class Student(models.Model):
     email = models.EmailField(max_length=200)
     batch = models.IntegerField()
 
-    course = models.CharField(max_length=200,null=True, choices=course_types)
+    course = models.CharField(max_length=200, null=True, choices=course_types)
     isAlumni = models.BooleanField()
     image = models.ImageField(upload_to="students")
-    department = models.ForeignKey(Site,on_delete= models.CASCADE,related_name="students")
+    department = models.ForeignKey(
+        Site, on_delete=models.CASCADE, related_name="students"
+    )
     on_site = CurrentSiteManager("department")
 
     def __str__(self) -> str:
@@ -79,5 +80,5 @@ class Project(models.Model):
         Student, on_delete=models.CASCADE, related_name="projects"
     )
 
-    def __str__(self)-> str :
+    def __str__(self) -> str:
         return f"{self.person.department.name} : {self.person.name}"
