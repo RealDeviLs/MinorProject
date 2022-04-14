@@ -10,6 +10,7 @@ def home_page(request):
     print(settings.SITE_ID)
     basic_data = WhiteLabel.on_site.first()
     data = {
-        "basic":basic_data
+        "basic":basic_data,
+
     }
     return render(request,template_name="index.html",context = data)
