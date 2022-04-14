@@ -5,6 +5,7 @@
 
 <head>
   <title>Department of IT</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 {% #head %}
@@ -258,6 +259,7 @@
       <div class="bg-white py-16 px-4 sm:px-6 lg:col-span-3 lg:py-24 lg:px-8 xl:pl-12">
         <div class="max-w-lg mx-auto lg:max-w-none">
           <form action="#" method="POST" class="grid grid-cols-1 gap-y-6">
+            {% csrf_token %}
             <div>
               <label for="full-name" class="sr-only">Full name</label>
               <input type="text" name="full-name" id="full-name" autocomplete="name"
@@ -283,8 +285,10 @@
                 placeholder="Message"></textarea>
             </div>
             <div>
+              <div class="g-recaptcha" data-sitekey="6Lfs1HAfAAAAAJ63BCqIC-eehpxFgqD2rqwuM0c3" data-callback="recaptcha_callback"></div>
+              <br>
               <button type="submit"
-                class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+                class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-not-allowed" id="submit-btn" href="{% url 'contact' %}" disabled>Submit</button>
             </div>
           </form>
         </div>
@@ -470,6 +474,14 @@
   </footer>
 
   <!-- Footer ends -->
+  <script>
+      function recaptcha_callback()
+      {
+        var submitBtn=document.querySelector('#submit-btn');
+        submitBtn.removeAttribute('disabled')
+        submitBtn.style.cursor='pointer'
+      }
+  </script>
 </body>
 
 </html>
