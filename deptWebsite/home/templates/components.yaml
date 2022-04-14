@@ -1,0 +1,6 @@
+components:
+  head: "head.html"
+  hero: "hero.html"
+  vision_mission: "vision_mission.html"
+  info: "info.html"
+  programmes: "programmes.html"

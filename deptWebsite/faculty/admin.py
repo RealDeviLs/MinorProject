@@ -1,4 +1,5 @@
 import re
+from turtle import mode
 from django.contrib import admin
 from .models import (
     DeptPerson,
