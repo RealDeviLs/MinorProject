@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 
+from .forms import BasicProfileForm
 from .models import DeptPerson
 
 # Create your views here.
@@ -42,3 +43,16 @@ def faculty_detail(request, id):
         "awards": profile.awards.all(),
     }
     return render(request, template_name="profile.html", context=data)
+
+
+def edit_basic(request, id):
+
+    user = request.user
+    person = DeptPerson.on_site.filter(user=user).first()
+    if person is not None:
+        form = BasicProfileForm(instance=person)
+    else:
+        form = BasicProfileForm()
+
+    data = {"form": form}
+    return render(request, template_name="edit_basic.html", context=data)
