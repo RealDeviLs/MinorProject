@@ -1,18 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+
 from .models import DeptPerson
-from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 
 def faculty_page(request):
     faculty = DeptPerson.on_site.all()
-    data = {
-        "faculty":faculty
-    }
-    return render(request, template_name='faculty_page.html',context=data)
+    data = {"faculty": faculty}
+    return render(request, template_name="faculty_page.html", context=data)
 
-def faculty_detail(request,id):
-    profile = get_object_or_404(DeptPerson,id=id)
+
+def faculty_detail(request, id):
+    profile = get_object_or_404(DeptPerson, id=id)
     profile_links = profile.profile_links.content
     research_info = profile.research_info.content
     journal_publications = profile.journal_publications.all()
@@ -39,6 +39,6 @@ def faculty_detail(request,id):
         "pg_students": pg_students,
         "patents": patents,
         "responsibilities": responsibilities,
-        "awards": profile.awards.all()
+        "awards": profile.awards.all(),
     }
-    return render(request, template_name='profile.html',context =data)
+    return render(request, template_name="profile.html", context=data)

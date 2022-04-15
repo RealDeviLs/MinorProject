@@ -1,13 +1,17 @@
 from django.contrib import admin
-from .models import ProgramPeo,AcademicProgram
+
+from .models import AcademicProgram, ProgramPeo
+
 # Register your models here.
+
 
 class ProgramPeoInline(admin.StackedInline):
     model = ProgramPeo
 
+
 @admin.register(AcademicProgram)
 class AcademicProgramAdmin(admin.ModelAdmin):
-    inlines = ProgramPeoInline,
+    inlines = (ProgramPeoInline,)
 
     class Meta:
         model = AcademicProgram

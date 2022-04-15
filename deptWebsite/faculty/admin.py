@@ -1,20 +1,20 @@
-import re
 from django.contrib import admin
+
 from .models import (
-    DeptPerson,
-    ResearchInfo,
-    ProfileLinks,
-    JournalPublication,
-    ConferencePublication,
-    BookPublication,
-    Project,
-    Event,
     Affilation,
-    PhDSupervised,
-    PGDissertationGuided,
-    Patent,
-    Responsibility,
     Award,
+    BookPublication,
+    ConferencePublication,
+    DeptPerson,
+    Event,
+    JournalPublication,
+    Patent,
+    PGDissertationGuided,
+    PhDSupervised,
+    ProfileLinks,
+    Project,
+    ResearchInfo,
+    Responsibility,
 )
 
 # Register your models here.
@@ -23,17 +23,22 @@ from .models import (
 class ResearchInfoInline(admin.StackedInline):
     model = ResearchInfo
 
+
 class ProfileLinksInline(admin.StackedInline):
     model = ProfileLinks
+
 
 class JournalPublicationInline(admin.StackedInline):
     model = JournalPublication
 
+
 class ConferencePublicationInline(admin.StackedInline):
     model = ConferencePublication
 
+
 class BookPublicationInline(admin.StackedInline):
     model = BookPublication
+
 
 class ProjectInline(admin.StackedInline):
     model = Project
@@ -50,8 +55,10 @@ class AffilationInline(admin.StackedInline):
 class PhDSupervisedInline(admin.StackedInline):
     model = PhDSupervised
 
+
 class PGDissertationGuidedInline(admin.StackedInline):
     model = PGDissertationGuided
+
 
 class PatentInline(admin.StackedInline):
     model = Patent
@@ -82,5 +89,6 @@ class DeptPersonAdmin(admin.ModelAdmin):
         ResponsibilityInline,
         AwardInline,
     ]
+
     class Meta:
         model = DeptPerson

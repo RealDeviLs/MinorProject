@@ -1,13 +1,18 @@
 from django.contrib import admin
-from .models import WhiteLabel,SocietyClub,HeroPhotos
+
+from .models import HeroPhotos, SocietyClub, WhiteLabel
+
 # Register your models here.
+
 
 class SocietyClubInline(admin.StackedInline):
     model = SocietyClub
 
+
 @admin.register(WhiteLabel)
 class WhiteLabelAdmin(admin.ModelAdmin):
-    inlines = SocietyClubInline,
+    inlines = (SocietyClubInline,)
+
     class Meta:
         model = WhiteLabel
 
