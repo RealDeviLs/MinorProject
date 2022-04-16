@@ -13,8 +13,12 @@ def faculty_page(request):
 
 def faculty_detail(request, id):
     profile = get_object_or_404(DeptPerson, id=id)
-    profile_links = profile.profile_links.content
-    research_info = profile.research_info.content
+    profile_links = (
+        profile.profile_links.content if hasattr(profile, "profile_links") else None
+    )
+    research_info = (
+        profile.research_info.content if hasattr(profile, "research_info") else None
+    )
     journal_publications = profile.journal_publications.all()
     conference_publications = profile.conference_publications.all()
     book_publications = profile.book_publications.all()
