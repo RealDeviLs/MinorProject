@@ -38,13 +38,16 @@ class ResearchInfo(models.Model):
     )
 
 
+# change this to foriegnKey once done
 class ProfileLinks(models.Model):
-    content = HTMLField()
+    site_name = models.CharField(max_length=70)
+    url = models.URLField()
     person = models.OneToOneField(
         DeptPerson, on_delete=models.CASCADE, related_name="profile_links"
     )
 
 
+# change date to Year
 class JournalPublication(models.Model):
     description = models.TextField()
     journal = models.CharField(max_length=200)
