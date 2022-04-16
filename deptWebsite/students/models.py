@@ -5,9 +5,9 @@ from django.db import models
 # Create your models here.
 
 course_types = (
-    ("btech", "btech"),
-    ("mtech", "mtech"),
-    ("phd", "phd"),
+    ("btech", "BTech"),
+    ("mtech", "MTech"),
+    ("phd", "PhD"),
 )
 
 
@@ -15,10 +15,10 @@ class Student(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     batch = models.IntegerField()
-
     course = models.CharField(max_length=200, null=True, choices=course_types)
     isAlumni = models.BooleanField()
     image = models.ImageField(upload_to="students")
+    linkedin_profile = models.URLField(max_length=200, null=True)
     department = models.ForeignKey(
         Site, on_delete=models.CASCADE, related_name="students"
     )
@@ -28,7 +28,7 @@ class Student(models.Model):
         return f"{self.department.name} : {self.batch} : {self.name}"
 
 
-intern_types = (("summer", "summer"), ("six_months", "six months"))
+intern_types = (("summer", "Summer"), ("six_months", "Six Months"))
 
 
 class Internship(models.Model):
@@ -45,9 +45,9 @@ class Internship(models.Model):
 
 
 offer_types = (
-    ("onCampus", "onCampus"),
-    ("offCampus", "offCampus"),
-    ("ppo", "ppo"),
+    ("onCampus", "On Campus"),
+    ("offCampus", "Off Campus"),
+    ("ppo", "PPO"),
 )
 
 
