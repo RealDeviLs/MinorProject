@@ -20,6 +20,7 @@ class WhiteLabel(models.Model):
     youtube = models.URLField(null=True, blank=True)
     hod = models.ForeignKey(DeptPerson, on_delete=models.CASCADE, null=True)
     hod_message = models.TextField(null=True, blank=True)
+    image = models.ImageField(upload_to="HeroPhotos", null=True, blank=True)
     department = models.ForeignKey(
         Site, on_delete=models.CASCADE, related_name="whitelabel", null=True
     )

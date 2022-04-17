@@ -97,12 +97,6 @@ def edit_basic(request, id):
         else:
             messages.error(request, f"failed to save, {data.errors}")
 
-    person = DeptPerson.on_site.filter(id=id).first()
-    if person:
-        basic_form = BasicProfileForm(instance=person)
-    else:
-        basic_form = BasicProfileForm()
-
     profile_links = ProfileLinks.objects.filter(person=person).all()
     research_info = ResearchInfo.objects.filter(person=person).all()
     profile_link_form = ProfileLinksForm()
@@ -484,6 +478,7 @@ def edit_journal_pub(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("journal", person_id)
         data = JournalPublicationForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -505,6 +500,7 @@ def edit_conf_pub(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("conf", person_id)
         data = ConferencePublicationForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -526,6 +522,7 @@ def edit_book_pub(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("book", person_id)
         data = BookPublicationForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -547,6 +544,7 @@ def edit_project(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("projects", person_id)
         data = ProjectForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -568,6 +566,7 @@ def edit_event(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("events", person_id)
         data = EventForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -589,6 +588,7 @@ def edit_affiliation(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("affiliation", person_id)
         data = AffilationForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -610,6 +610,7 @@ def edit_phd(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("phd", person_id)
         data = PhDSupervisedForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -631,6 +632,7 @@ def edit_pgd(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("pgd", person_id)
         data = PGDissertationGuidedForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -675,6 +677,7 @@ def edit_responsibility(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("responsibility", person_id)
         data = ResponsibilityForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -696,6 +699,7 @@ def edit_award(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("award", person_id)
         data = AwardForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -759,6 +763,7 @@ def edit_profile_links(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("edit_profile", person_id)
         data = ProfileLinksForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
@@ -780,6 +785,7 @@ def edit_research_info(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
+            return redirect("edit_profile", person_id)
         data = ResearchInfoForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()

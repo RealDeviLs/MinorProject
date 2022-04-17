@@ -1,165 +1,389 @@
-{% extends "base.html" %}
-{% load static %}
-{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+    {% load widget_tweaks %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+
+    </head>
+
+    <body>
+
+        <div>
+            <div class="relative bg-sky-700 pb-32 overflow-hidden" x-data="{menu:true}">
 
 
-{% block content %}
-
-    <!--
-  This example requires Tailwind CSS v2.0+
-
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          sky: colors.sky,
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-    -->
-
-
-
-
-    <main class="max-w-lg mx-auto pt-10 pb-12 px-4 lg:pb-16">
-        <form  method="POST"  role="form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="space-y-6">
-                <div>
-                    <h1 class="text-lg leading-6 font-medium text-gray-900">Add a new department</h1>
-                    <p class="mt-1 text-sm text-gray-500">Please fill the form to create new department website</p>
-                </div>
-
-                <div class=" border-gray-600">
-
-                    <label for="project-name" class="block text-sm font-medium text-gray-700"> Project Name </label>
-                    <div class="mt-1">
-                        <!-- <input type="text" name="project-name" id="project-name" class="" value=""> -->
-                        {% render_field white_label_form.department_name class+="block border-2 w-full  shadow-sm focus:ring-sky-500  sm:text-md border-gray-500 rounded-sm" placeholder="Department Name"  %}
-
+                <div aria-hidden="true"
+                    class="inset-y-0 absolute inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0">
+                    <div class="absolute inset-0 flex">
+                        <div class="h-full w-1/2" style="background-color: #0a527b"></div>
+                        <div class="h-full w-1/2" style="background-color: #065d8c"></div>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <svg class="flex-shrink-0" width="1750" height="308" viewBox="0 0 1750 308"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M284.161 308H1465.84L875.001 182.413 284.161 308z" fill="#0369a1" />
+                            <path d="M1465.84 308L16.816 0H1750v308h-284.16z" fill="#065d8c" />
+                            <path d="M1733.19 0L284.161 308H0V0h1733.19z" fill="#0a527b" />
+                            <path d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z" fill="#0a4f76" />
+                        </svg>
                     </div>
                 </div>
-
-                <div>
-                    <label for="description" class="block text-sm font-medium text-gray-700"> Description </label>
-                    <div class="mt-1">
-                        {% render_field white_label_form.department_description class+="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border border-gray-300 rounded-md" placeholder="Department Description"  %}
-
+                <header class="relative py-10">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h1 class="text-3xl font-bold text-white">Settings</h1>
                     </div>
-                </div>
+                </header>
+            </div>
 
-                <div class="space-y-2">
-                    <div class="space-y-1">
-                        <label for="add-team-members" class="block text-sm font-medium text-gray-700"> Add Team Members </label>
-                        <p id="add-team-members-helper" class="sr-only">Search by email address</p>
-                        <div class="flex">
-                            <div class="flex-grow">
-                                <input type="text" name="add-team-members" id="add-team-members" class="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md" placeholder="Email address" aria-describedby="add-team-members-helper">
+            <main class="relative -mt-32">
+                <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+                            <aside class="py-6 lg:col-span-3">
+                                <nav class="space-y-1">
+                                    <!-- Current: "bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700", Default: "border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
+                                    <a href="#"
+                                        class="bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700 group border-l-4 px-3 py-2 flex items-center text-sm font-medium"
+                                        aria-current="page">
+                                        <!--
+                  Heroicon name: outline/user-circle
+
+                  Current: "text-teal-500 group-hover:text-teal-500", Default: "text-gray-400 group-hover:text-gray-500"
+                -->
+                                        <svg class="text-teal-500 group-hover:text-teal-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="truncate"> Profile </span>
+                                    </a>
+
+                                    <a href="$#"
+                                        class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group border-l-4 px-3 py-2 flex items-center text-sm font-medium">
+                                        <!-- Heroicon name: outline/key -->
+                                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                        </svg>
+                                        <span class="truncate"> Awards </span>
+                                    </a>
+
+                                </nav>
+                            </aside>
+
+                            <form class="divide-y divide-gray-200 lg:col-span-9" enctype="multipart/form-data" action="#"
+                                method="POST">
+                                <!-- Profile section -->
+                                {% csrf_token %}
+                                <div class="py-6 px-4 sm:p-6 lg:pb-8">
+                                    <div>
+                                        <h2 class="text-lg leading-6 font-medium text-gray-900">Profile</h2>
+                                        <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly so
+                                            be careful what you share.</p>
+                                    </div>
+
+                                    <div class="mt-6 flex flex-col lg:flex-row">
+                                        <div class="flex-grow space-y-6">
+
+
+                                            <div class="w-full sm:w-2/3">
+                                                <label for="name" class="block text-sm font-medium text-gray-700">Department
+                                                    Name</label>
+                                                {% render_field form.department_name id="name"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                            </div>
+
+                                            <div class="w-full sm:w-2/3">
+                                                <label for="email"
+                                                    class="block text-sm font-medium text-gray-700">Email</label>
+                                                {% render_field form.email id="email"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
+                                            <p class="text-sm font-medium text-gray-700" aria-hidden="true">Photo</p>
+                                            <div class="mt-1 lg:hidden">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
+                                                        aria-hidden="true">
+                                                        <img class="rounded-full h-full w-full" id="mobileImage"
+                                                            {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                                src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                                alt="" {% endif %}>
+                                                    </div>
+                                                    <div class="ml-5 rounded-md shadow-sm">
+                                                        <div
+                                                            class="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-sky-500">
+                                                            <label for="mobile-user-photo"
+                                                                class="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none">
+                                                                <span>Change</span>
+                                                                <span class="sr-only"> user photo</span>
+                                                            </label>
+                                                            {% render_field form.image id="mobile-user-photo" type="file"  class+="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" %}
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="hidden relative rounded-full overflow-hidden lg:block">
+                                                <img class="relative rounded-full w-40 h-40" id="desktopImage"
+                                                    {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                        src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                        alt="" {% endif %}>
+                                                <label for="desktop-user-photo"
+                                                    class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
+                                                    <span>Change</span>
+                                                    <span class="sr-only"> user photo</span>
+                                                    {% render_field form.image id="desktop-user-photo" type="file"  class+="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" %}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-6 grid grid-cols-12 gap-6">
+
+
+                                        <div class="col-span-12">
+                                            <label for="address"
+                                                class="block text-sm font-medium text-gray-700">Description</label>
+                                            {% render_field form.department_description id="address"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-12 ">
+                                            <label for="designation" class="block text-sm font-medium text-gray-700">
+                                                Vision</label>
+                                            {% render_field form.vision id="designation"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-12 ">
+                                            <label for="phone"
+                                                class="block text-sm font-medium text-gray-700">Mission</label>
+                                            {% render_field form.misison id="phone"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-12">
+                                            <label for="research_profile"
+                                                class="block text-sm font-medium text-gray-700">Hod's Message</label>
+                                            {% render_field form.hod_message id="research_profile"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+                                        <div class="col-span-6">
+                                            <label for="qualification"
+                                                class="block text-sm font-medium text-gray-700">Hod</label>
+                                            {% render_field form.hod id="qualification"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-6">
+                                            <label for="qualification"
+                                                class="block text-sm font-medium text-gray-700">Phone</label>
+                                            {% render_field form.phoneNumber id="qualification"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+                                        <div class="col-span-6">
+                                            <label for="qualification"
+                                                class="block text-sm font-medium text-gray-700">Facebook</label>
+                                            {% render_field form.facebook id="qualification"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+                                        <div class="col-span-6">
+                                            <label for="qualification"
+                                                class="block text-sm font-medium text-gray-700">Linkedin</label>
+                                            {% render_field form.linkedin id="qualification"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+                                        <div class="col-span-6">
+                                            <label for="qualification"
+                                                class="block text-sm font-medium text-gray-700">Youtube</label>
+                                            {% render_field form.youtube id="qualification"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" value="basic" name="type"
+                                    class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-6 sm:w-auto">Update<span
+                                        class="sr-only">Update</span></button>
+
+                                <!-- Privacy section -->
+                                <!-- table here -->
+
+                                <!-- This example requires Tailwind CSS v2.0+ -->
+
+
+                                <!-- custom table -->
+
+                            </form>
+                            <div>
+
                             </div>
-                            <span class="ml-3">
-                                <button type="button" class="bg-white inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                                    <!-- Heroicon name: solid/plus -->
-                                    <svg class="-ml-2 mr-1 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                                    </svg>
-                                    <span>Add</span>
-                                </button>
-                            </span>
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_club'  %}">
+                                {% csrf_token %}
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="sm:flex sm:items-center justify-between">
+                                        <div class="w-full sm:w-1/2">
+                                            <strong class="my-3">Society and Clubs</strong>
+                                            <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                                search</label>
+                                            <div class="mt-1 relative flex items-center">
+                                                <input type="text" name="search" id="search" data-table="order-table"
+                                                    class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                                <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                                    <kbd
+                                                        class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                                        ⌘K </kbd>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="mt-4 sm:flex sm:items-center justify-between">
+                                        {% render_field club_form.title id="research_profile" placeholder="site name"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field club_form.description id="research_profile" placeholder="description" class+="shadow-sm sm:ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field club_form.site id="research_profile" placeholder="url" class+="shadow-sm sm:ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+
+                                        <div class=" sm:ml-16 sm:flex-none">
+                                            <button type="submit" name="profileLink"
+                                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                                Add New</button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                        title</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Description</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Site</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for club in clubs %}
+                                                    <tr>
+
+
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ club.title }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ club.description }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ club.site }}</td>
+
+                                                        <td
+                                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                            <a href="{% url 'edit_club' club.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                                <!-- More plans... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+
+
                         </div>
                     </div>
-
-                    <div class="border-b border-gray-200">
-                        <ul role="list" class="divide-y divide-gray-200">
-                            <li class="py-4 flex">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1513910367299-bce8d8a0ebf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <div class="ml-3 flex flex-col">
-                                    <span class="text-sm font-medium text-gray-900">Calvin Hawkins</span>
-                                    <span class="text-sm text-gray-500">calvin.hawkins@example.com</span>
-                                </div>
-                            </li>
-
-                            <li class="py-4 flex">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <div class="ml-3 flex flex-col">
-                                    <span class="text-sm font-medium text-gray-900">Bessie Richards</span>
-                                    <span class="text-sm text-gray-500">bessie.richards@example.com</span>
-                                </div>
-                            </li>
-
-                            <li class="py-4 flex">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                                <div class="ml-3 flex flex-col">
-                                    <span class="text-sm font-medium text-gray-900">Floyd Black</span>
-                                    <span class="text-sm text-gray-500">floyd.black@example.com</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
+            </main>
+        </div>
 
-                <fieldset>
-                    <legend class="text-sm font-medium text-gray-900">Privacy</legend>
+        <script>
+            (function () {
+                'use strict';
 
-                    <div class="mt-1 bg-white rounded-md shadow-sm -space-y-px">
-                        <!-- Checked: "bg-sky-50 border-sky-200 z-10", Not Checked: "border-gray-200" -->
-                        <label class="rounded-tl-md rounded-tr-md relative border p-4 flex cursor-pointer focus:outline-none">
-                            <input type="radio" name="privacy-setting" value="Public access" class="h-4 w-4 mt-0.5 cursor-pointer text-sky-600 border-gray-300 focus:ring-sky-500" aria-labelledby="privacy-setting-0-label" aria-describedby="privacy-setting-0-description">
-                            <div class="ml-3 flex flex-col">
-                                <!-- Checked: "text-sky-900", Not Checked: "text-gray-900" -->
-                                <span id="privacy-setting-0-label" class="block text-sm font-medium"> Public access </span>
-                                <!-- Checked: "text-sky-700", Not Checked: "text-gray-500" -->
-                                <span id="privacy-setting-0-description" class="block text-sm"> This project would be available to anyone who has the link </span>
-                            </div>
-                        </label>
+                var TableFilter = (function () {
+                    var Arr = Array.prototype;
+                    var input;
 
-                        <!-- Checked: "bg-sky-50 border-sky-200 z-10", Not Checked: "border-gray-200" -->
-                        <label class="relative border p-4 flex cursor-pointer focus:outline-none">
-                            <input type="radio" name="privacy-setting" value="Private to Project Members" class="h-4 w-4 mt-0.5 cursor-pointer text-sky-600 border-gray-300 focus:ring-sky-500" aria-labelledby="privacy-setting-1-label" aria-describedby="privacy-setting-1-description">
-                            <div class="ml-3 flex flex-col">
-                                <!-- Checked: "text-sky-900", Not Checked: "text-gray-900" -->
-                                <span id="privacy-setting-1-label" class="block text-sm font-medium"> Private to Project Members </span>
-                                <!-- Checked: "text-sky-700", Not Checked: "text-gray-500" -->
-                                <span id="privacy-setting-1-description" class="block text-sm"> Only members of this project would be able to access </span>
-                            </div>
-                        </label>
+                    function onInputEvent(e) {
+                        input = e.target;
+                        var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
+                        Arr.forEach.call(table1, function (table) {
+                            Arr.forEach.call(table.tBodies, function (tbody) {
+                                Arr.forEach.call(tbody.rows, filter);
+                            });
+                        });
+                    }
 
-                        <!-- Checked: "bg-sky-50 border-sky-200 z-10", Not Checked: "border-gray-200" -->
-                        <label class="rounded-bl-md rounded-br-md relative border p-4 flex cursor-pointer focus:outline-none">
-                            <input type="radio" name="privacy-setting" value="Private to you" class="h-4 w-4 mt-0.5 cursor-pointer text-sky-600 border-gray-300 focus:ring-sky-500" aria-labelledby="privacy-setting-2-label" aria-describedby="privacy-setting-2-description">
-                            <div class="ml-3 flex flex-col">
-                                <!-- Checked: "text-sky-900", Not Checked: "text-gray-900" -->
-                                <span id="privacy-setting-2-label" class="block text-sm font-medium"> Private to you </span>
-                                <!-- Checked: "text-sky-700", Not Checked: "text-gray-500" -->
-                                <span id="privacy-setting-2-description" class="block text-sm"> You are the only one able to access this project </span>
-                            </div>
-                        </label>
-                    </div>
-                </fieldset>
+                    function filter(row) {
+                        var text = row.textContent.toLowerCase();
+                        //console.log(text);
+                        var val = input.value.toLowerCase();
+                        //console.log(val);
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
 
-                <div>
-                    <label for="tags" class="block text-sm font-medium text-gray-700"> Tags </label>
-                    <input type="text" name="tags" id="tags" class="mt-1 block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md">
-                </div>
+                    return {
+                        init: function () {
+                            var inputs = document.getElementsByClassName('table-filter');
+                            Arr.forEach.call(inputs, function (input) {
+                                input.oninput = onInputEvent;
+                            });
+                        }
+                    };
 
-                <div class="flex justify-end">
-                    <button type="button" class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">Cancel</button>
-                    <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-sky-500 hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">Create this project</button>
-                </div>
-            </div>
-        </form>
-    </main>
+                })();
 
-{%  endblock content %}
+                TableFilter.init();
+            })();
+
+            const desktopImageInput = document.getElementById("desktop-user-photo")
+            const desktopImage = document.getElementById("desktopImage")
+            const mobileImageInput = document.getElementById("mobile-user-photo")
+            const mobileImage = document.getElementById("mobileImage")
+            mobileImageInput.onchange = evt => {
+                const [file] = mobileImageInput.files
+                if (file) {
+                    console.log("erhthe")
+                    mobileImage.src = URL.createObjectURL(file)
+                    desktopImage.src = URL.createObjectURL(file)
+
+                }
+            }
+            desktopImageInput.onchange = evt => {
+                const [file] = desktopImageInput.files
+                if (file) {
+                    desktopImage.src = URL.createObjectURL(file)
+                    mobileImage.src = URL.createObjectURL(file)
+
+                }
+            }
+        </script>
+    </body>
+
+</html>
