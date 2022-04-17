@@ -56,7 +56,7 @@ repos:
         name: flake8
         types: [python]
         language: system
-        entry: poetry run flake8 --config .flake8  --ignore=E501 s
+        entry: poetry run flake8 --config .flake8  --ignore=E501,W503
         exclude: run.py
 
 

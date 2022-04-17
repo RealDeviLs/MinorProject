@@ -39,6 +39,9 @@ class ResearchInfoForm(forms.ModelForm):
     class Meta:
         model = ResearchInfo
         exclude = ["person"]
+        widgets = {
+            "content": Textarea(attrs={"rows": 1}),
+        }
 
 
 class JournalPublicationForm(forms.ModelForm):

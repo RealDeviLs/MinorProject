@@ -11,7 +11,8 @@
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
         <script src="https://unpkg.com/alpinejs" defer></script>
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" media="all">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            media="all">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
         <title>Document</title>
@@ -21,23 +22,19 @@
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success'%}
-                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-                {% elif message.tags == 'info' %}
-                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-                {% elif message.tags == 'warning' %}
-                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-                {% elif message.tags == 'error' %}
-                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-        <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script>
+                {% elif message.tags == 'info' %} <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}')
+                </script> {% elif message.tags == 'warning' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{  message | safe }}') </script>
+                {% elif message.tags == 'error' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script> {% endif %} {% endfor %}
+        {% endif %} <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Add New {{ type }} Publication</h3>
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Add New {{ type }} </h3>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form  method="POST">
+                    <form  method="POST" >
                         {% csrf_token %}
                         <div class="grid grid-cols-6 gap-6">
                             {% for field in form %}
@@ -104,8 +101,17 @@
                                 {% endfor %}
 
                                 <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-                                    <button type="button"
-                                        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update</button>
+                                    <a href="{% url type entry.id %}">
+                                        <button type="button"
+                                            class="inline-flex items-center
+                                                rounded-md border border-gray-300 bg-white
+                                                px-3 py-2 text-sm font-medium leading-4
+                                                text-gray-700 shadow-sm hover:bg-gray-50
+                                                focus:outline-none focus:ring-2 focus:ring-indigo-500
+                                                focus:ring-offset-2 disabled:cursor-not-allowed
+                                                disabled:opacity-30">Update</button>
+                                    </a>
+
                                 </td>
                             </tr>
                         {% endfor %}

@@ -222,8 +222,10 @@
                                 </nav>
                             </aside>
 
-                            <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
+                            <form class="divide-y divide-gray-200 lg:col-span-9" enctype="multipart/form-data" action="#"
+                                method="POST">
                                 <!-- Profile section -->
+                                {% csrf_token %}
                                 <div class="py-6 px-4 sm:p-6 lg:pb-8">
                                     <div>
                                         <h2 class="text-lg leading-6 font-medium text-gray-900">Profile</h2>
@@ -257,8 +259,9 @@
                                                     <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
                                                         aria-hidden="true">
                                                         <img class="rounded-full h-full w-full" id="mobileImage"
-                                                            src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80"
-                                                            alt="">
+                                                            {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                                src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                                alt="" {% endif %}>
                                                     </div>
                                                     <div class="ml-5 rounded-md shadow-sm">
                                                         <div
@@ -278,8 +281,9 @@
 
                                             <div class="hidden relative rounded-full overflow-hidden lg:block">
                                                 <img class="relative rounded-full w-40 h-40" id="desktopImage"
-                                                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80"
-                                                    alt="">
+                                                    {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                        src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                        alt="" {% endif %}>
                                                 <label for="desktop-user-photo"
                                                     class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
                                                     <span>Change</span>
@@ -327,11 +331,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" value="basic" name="type"
+                                    class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-6 sm:w-auto">Update<span
+                                        class="sr-only">Update</span></button>
 
                                 <!-- Privacy section -->
                                 <!-- table here -->
 
                                 <!-- This example requires Tailwind CSS v2.0+ -->
+
+
+                                <!-- custom table -->
+
+                            </form>
+                            <div>
+
+                            </div>
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_profile_link'  %}">
+                                {% csrf_token %}
                                 <div class="px-4 sm:px-6 lg:px-8">
                                     <div class="sm:flex sm:items-center justify-between">
                                         <div class="w-full sm:w-1/2">
@@ -355,13 +373,14 @@
                                         {% render_field profile_link_form.url id="research_profile" placeholder="url" class+="shadow-sm sm:ml-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
 
                                         <div class=" sm:ml-16 sm:flex-none">
-                                            <button type="button" name="profileLink"
+                                            <button type="submit" name="profileLink"
                                                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
                                                 Add New</button>
                                         </div>
                                     </div>
 
-                                    <div class="-mx-4 mb-4 mt-12 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
                                         <table class="min-w-full divide-y divide-gray-300 order-table table">
                                             <thead>
                                                 <tr>
@@ -387,9 +406,12 @@
 
                                                         <td
                                                             class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
-                                                            <button type="button"
-                                                                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Select<span
-                                                                    class="sr-only">Update</span></button>
+                                                            <a href="{% url 'links' link.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
                                                         </td>
                                                     </tr>
 
@@ -401,9 +423,79 @@
                                         </table>
                                     </div>
                                 </div>
+                            </form>
 
-                                <!-- custom table -->
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_research_profile'  %}">
+                                {% csrf_token %}
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="sm:flex sm:items-center justify-between">
+                                        <div class="w-full sm:w-1/2">
+                                            <strong class="my-3">Research Interests</strong>
+                                            <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                                search</label>
+                                            <div class="mt-1 relative flex items-center">
+                                                <input type="text" name="search" id="search" data-table="order-table"
+                                                    class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                                <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                                    <kbd
+                                                        class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                                        ⌘K </kbd>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                    <p>Add new Research Interest</p>
+                                    <div class="mt-4 sm:flex sm:items-center justify-between">
+                                        {% render_field research_info_form.content id="research_profile" placeholder="site name"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+
+                                        <div class=" sm:ml-16 sm:flex-none">
+                                            <button type="submit" name="profileLink"
+                                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                                Add New</button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                        Interest</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for info in research_info %}
+                                                    <tr>
+
+
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ info.content }}</td>
+
+                                                        <td
+                                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                            <a href="{% url 'edit_research_info' info.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                                <!-- More plans... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

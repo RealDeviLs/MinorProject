@@ -186,8 +186,8 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "media/emails")
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'atmproject.sem3@gmail.com'
-EMAIL_HOST_PASSWORD = 'fsyaemvgddaqpbzv'
+EMAIL_HOST_USER = "atmproject.sem3@gmail.com"
+EMAIL_HOST_PASSWORD = "fsyaemvgddaqpbzv"
 
 
 TINYMCE_DEFAULT_CONFIG = {

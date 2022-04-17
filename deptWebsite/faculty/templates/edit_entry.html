@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            media="all">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success'%}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script>
+                {% elif message.tags == 'info' %} <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}')
+                </script> {% elif message.tags == 'warning' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{  message | safe }}') </script>
+                {% elif message.tags == 'error' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script> {% endif %} {% endfor %}
+        {% endif %} <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Update {{ type }} </h3>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <form  method="POST">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-6 gap-6">
+                            {% for field in form %}
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="Description"
+                                        class="block text-sm font-medium text-gray-700">{{field.name}}</label>
+                                    {% render_field field id="Description"  class+="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %}
+                                </div>
+
+                            {% endfor %}
+                            <div class="col-span-6 sm:col-span-3 mt-6">
+                                <button type="submit"
+                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update</button>
+                            </div>
+                            <div class="col-span-6 sm:col-span-3 mt-6">
+                                <button type="submit" name="delete" value="yes"
+                                    class="inline-flex items-center rounded-md border border-gray-300 bg-red-100 px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Delete</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- This example requires Tailwind CSS v2.0+ -->
+
+
+        <!-- custom table -->
+
+
+    </body>
+
+</html>

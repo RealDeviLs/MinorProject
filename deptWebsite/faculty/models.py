@@ -31,6 +31,7 @@ class DeptPerson(models.Model):
         return f"{self.department.name} :{self.name}"
 
 
+# change this to foriegnKey once done need to drop db to do this
 class ResearchInfo(models.Model):
     content = HTMLField()
     person = models.OneToOneField(
@@ -38,7 +39,7 @@ class ResearchInfo(models.Model):
     )
 
 
-# change this to foriegnKey once done
+# change this to foriegnKey once done need to drop db to do this
 class ProfileLinks(models.Model):
     site_name = models.CharField(max_length=70)
     url = models.URLField()
