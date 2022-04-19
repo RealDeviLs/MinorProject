@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "social_django",
     "register_login",
     "django_cleanup.apps.CleanupConfig",
+    "django_extensions",
 ]
 
 SITE_ID: int = 1

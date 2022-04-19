@@ -10,6 +10,9 @@ from whitelabel.models import WhiteLabel
 
 from deptWebsite.settings import EMAIL_HOST_USER
 
+from .forms import DeptNewsForm
+from .models import DeptNews
+
 
 def home_page(request):
     print(get_current_site(request))
@@ -43,3 +46,25 @@ def contact(request):
         return HttpResponseRedirect(request.path_info)
 
     return render(request, "base.html")
+
+
+def show_news(request):
+
+    site = get_current_site(request)
+    if request.method == "POST":
+        instance = DeptNews(department=site)
+        data = DeptNewsForm(request.POST, request.FILES, instance=instance)
+        if data.is_valid():
+            data.save()
+            messages.success(request, "Saved")
+
+        else:
+            messages.error(request, f"failed to save, {data.errors}")
+    table_data = DeptNews.on_site.all()
+    form = DeptNewsForm()
+    table_entries = []
+    for i in table_data:
+        table_entries.append(vars(i))
+    data = {"form": form, "table_data": table_entries, "type": "Awards"}
+
+    return render(request, template_name="showTable.html", context=data)
