@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load widget_tweaks %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+
+    </head>
+
+    <body>
+        <!--
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  const colors = require('tailwindcss/colors')
+
+  module.exports = {
+    // ...
+    theme: {
+      extend: {
+        colors: {
+          sky: colors.sky,
+          teal: colors.teal,
+        },
+      },
+    },
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+        -->
+        <div class="-mx-4 mb-4 mt-2 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-300 order-table table">
+                <thead>
+                    <tr>
+
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            adsdads</th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            adsdads</th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            adsdads</th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            adsdads</th>
+                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                            adsdads</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in table_data %}
+                        <tr>
+
+                            {% for key,value in entry.items %}
+                                {% if forloop.counter > 2 %}
+                                    <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                        {{ value }}</td>
+                                {% endif %}
+                            {% endfor %}
+
+                            <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                <a href="{% url 'edit_basic_student' entry.id %}">
+                                    <button type="button" class="inline-flex items-center
+                                        rounded-md border border-gray-300 bg-white
+                                        px-3 py-2 text-sm font-medium leading-4
+                                        text-gray-700 shadow-sm hover:bg-gray-50
+                                        focus:outline-none focus:ring-2 focus:ring-indigo-500
+                                        focus:ring-offset-2 disabled:cursor-not-allowed
+                                        disabled:opacity-30">Update</button>
+                                </a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    <!-- More plans... -->
+                </tbody>
+            </table>
+        </div>
+        <script>
+            (function () {
+                'use strict';
+
+                var TableFilter = (function () {
+                    var Arr = Array.prototype;
+                    var input;
+
+                    function onInputEvent(e) {
+                        input = e.target;
+                        var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
+                        Arr.forEach.call(table1, function (table) {
+                            Arr.forEach.call(table.tBodies, function (tbody) {
+                                Arr.forEach.call(tbody.rows, filter);
+                            });
+                        });
+                    }
+
+                    function filter(row) {
+                        var text = row.textContent.toLowerCase();
+                        //console.log(text);
+                        var val = input.value.toLowerCase();
+                        //console.log(val);
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
+
+                    return {
+                        init: function () {
+                            var inputs = document.getElementsByClassName('table-filter');
+                            Arr.forEach.call(inputs, function (input) {
+                                input.oninput = onInputEvent;
+                            });
+                        }
+                    };
+
+                })();
+
+                TableFilter.init();
+            })();
+
+            const desktopImageInput = document.getElementById("desktop-user-photo")
+            const desktopImage = document.getElementById("desktopImage")
+            const mobileImageInput = document.getElementById("mobile-user-photo")
+            const mobileImage = document.getElementById("mobileImage")
+            mobileImageInput.onchange = evt => {
+                const [file] = mobileImageInput.files
+                if (file) {
+                    console.log("erhthe")
+                    mobileImage.src = URL.createObjectURL(file)
+                    desktopImage.src = URL.createObjectURL(file)
+
+                }
+            }
+            desktopImageInput.onchange = evt => {
+                const [file] = desktopImageInput.files
+                if (file) {
+                    desktopImage.src = URL.createObjectURL(file)
+                    mobileImage.src = URL.createObjectURL(file)
+
+                }
+            }
+        </script>
+    </body>
+
+</html>

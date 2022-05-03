@@ -21,7 +21,7 @@ class Activity(models.Model):
     details = HTMLField()
     date_from = models.DateField()
     date_to = models.DateField(blank=True, null=True)
-    cover_Image = models.ImageField(upload_to="activities")
+    cover_Image = models.ImageField(upload_to="activities", null=True, blank=True)
     activity_type = models.CharField(max_length=200, choices=type_choices, null=True)
     department = models.ForeignKey(
         Site, on_delete=models.CASCADE, related_name="activities", null=True

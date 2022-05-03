@@ -18,6 +18,7 @@ class Infra(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField()
+    image = models.ImageField(upload_to="infra")
     infra_type = models.CharField(max_length=200, null=True, choices=infra_type_choices)
     department = models.ForeignKey(
         Site, on_delete=models.CASCADE, related_name="infra", null=True
@@ -29,10 +30,10 @@ class Infra(models.Model):
         return f"{self.department.name} : {self.title}"
 
 
-class InfraImage(models.Model):
+# class InfraImage(models.Model):
 
-    image = models.ImageField(upload_to="infra")
-    infra = models.ForeignKey(Infra, on_delete=models.CASCADE, related_name="images")
+#     image = models.ImageField(upload_to="infra")
+#     infra = models.ForeignKey(Infra, on_delete=models.CASCADE, related_name="images")
 
-    def __str__(self):
-        return f"{self.infra.department.name} : {self.infra.title} : {self.pk}"
+#     def __str__(self):
+#         return f"{self.infra.department.name} : {self.infra.title} : {self.pk}"

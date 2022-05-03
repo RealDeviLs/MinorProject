@@ -26,6 +26,7 @@ urlpatterns = [
     path("infra/", include("infra.urls")),
     path("whitelabel/", include("whitelabel.urls")),
     path("students/", include("students.urls")),
+    path("academics/", include("academics.urls")),
     path("accounts/", include("register_login.urls")),
     path("", include("social_django.urls", namespace="social")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load widget_tweaks %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+
+    </head>
+
+    <body>
+        <!--
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  const colors = require('tailwindcss/colors')
+
+  module.exports = {
+    // ...
+    theme: {
+      extend: {
+        colors: {
+          sky: colors.sky,
+          teal: colors.teal,
+        },
+      },
+    },
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+        -->
+        <div>
+            <div class="relative bg-sky-700 pb-32 overflow-hidden" x-data="{menu:true}">
+
+
+                <div aria-hidden="true"
+                    class="inset-y-0 absolute inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0">
+                    <div class="absolute inset-0 flex">
+                        <div class="h-full w-1/2" style="background-color: #0a527b"></div>
+                        <div class="h-full w-1/2" style="background-color: #065d8c"></div>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <svg class="flex-shrink-0" width="1750" height="308" viewBox="0 0 1750 308"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M284.161 308H1465.84L875.001 182.413 284.161 308z" fill="#0369a1" />
+                            <path d="M1465.84 308L16.816 0H1750v308h-284.16z" fill="#065d8c" />
+                            <path d="M1733.19 0L284.161 308H0V0h1733.19z" fill="#0a527b" />
+                            <path d="M875.001 182.413L1733.19 0H16.816l858.185 182.413z" fill="#0a4f76" />
+                        </svg>
+                    </div>
+                </div>
+                <header class="relative py-10">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h1 class="text-3xl font-bold text-white">Settings</h1>
+                    </div>
+                </header>
+            </div>
+
+            <main class="relative -mt-32">
+                <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+                            <aside class="py-6 lg:col-span-3">
+                                <nav class="space-y-1">
+                                    <!-- Current: "bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700", Default: "border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
+                                    <a href="#"
+                                        class="bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700 group border-l-4 px-3 py-2 flex items-center text-sm font-medium"
+                                        aria-current="page">
+                                        <!--
+                  Heroicon name: outline/user-circle
+
+                  Current: "text-teal-500 group-hover:text-teal-500", Default: "text-gray-400 group-hover:text-gray-500"
+                -->
+                                        <svg class="text-teal-500 group-hover:text-teal-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="truncate"> Profile </span>
+                                    </a>
+
+
+
+
+
+
+
+
+
+
+                                    <a href="#"
+                                        class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group border-l-4 px-3 py-2 flex items-center text-sm font-medium">
+                                        <!-- Heroicon name: outline/key -->
+                                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+                                        </svg>
+                                        <span class="truncate"> Awards </span>
+                                    </a>
+
+
+
+
+
+                                </nav>
+                            </aside>
+
+                            <form class="divide-y divide-gray-200 lg:col-span-9" enctype="multipart/form-data" action="#"
+                                method="POST">
+                                <!-- Profile section -->
+                                {% csrf_token %}
+                                <div class="py-6 px-4 sm:p-6 lg:pb-8">
+                                    <div>
+                                        <h2 class="text-lg leading-6 font-medium text-gray-900">Profile</h2>
+                                        <p class="mt-1 text-sm text-gray-500">This information will be displayed publicly so
+                                            be careful what you share.</p>
+                                    </div>
+
+                                    <div class="mt-6 flex flex-col lg:flex-row">
+                                        <div class="flex-grow space-y-6">
+
+
+                                            <div class="w-full sm:w-2/3">
+                                                <label for="name" class="block text-sm font-medium text-gray-700">
+                                                    Name</label>
+                                                {% render_field form.name id="name"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                            </div>
+
+                                            <div class="w-full sm:w-2/3">
+                                                <label for="email"
+                                                    class="block text-sm font-medium text-gray-700">Email</label>
+                                                {% render_field form.email id="email"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
+                                            <p class="text-sm font-medium text-gray-700" aria-hidden="true">Photo</p>
+                                            <div class="mt-1 lg:hidden">
+                                                <div class="flex items-center">
+                                                    <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
+                                                        aria-hidden="true">
+                                                        <img class="rounded-full h-full w-full" id="mobileImage"
+                                                            {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                                src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                                alt="" {% endif %}>
+                                                    </div>
+                                                    <div class="ml-5 rounded-md shadow-sm">
+                                                        <div
+                                                            class="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-sky-500">
+                                                            <label for="mobile-user-photo"
+                                                                class="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none">
+                                                                <span>Change</span>
+                                                                <span class="sr-only"> user photo</span>
+                                                            </label>
+                                                            {% render_field form.image id="mobile-user-photo" type="file"  class+="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" %}
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="hidden relative rounded-full overflow-hidden lg:block">
+                                                <img class="relative rounded-full w-40 h-40" id="desktopImage"
+                                                    {% if person.image.url %} src={{ person.image.url }} {% else %}
+                                                        src="https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+                                                        alt="" {% endif %}>
+                                                <label for="desktop-user-photo"
+                                                    class="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100">
+                                                    <span>Change</span>
+                                                    <span class="sr-only"> user photo</span>
+                                                    {% render_field form.image id="desktop-user-photo" type="file"  class+="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md" %}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-6 grid grid-cols-12 gap-6">
+
+
+                                        <div class="col-span-6">
+                                            <label for="roll_number" class="block text-sm font-medium text-gray-700">Roll
+                                                Number</label>
+                                            {% render_field form.roll_number id="roll_number"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-6">
+                                            <label for="batch" class="block text-sm font-medium text-gray-700">
+                                                Batch</label>
+                                            {% render_field form.batch id="batch"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-12 sm:col-span-1">
+                                            <label for="is_alumni" class="block text-sm font-medium text-gray-700">Is
+                                                Alumni</label>
+                                            {% render_field form.is_alumni id="is_alumni"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                        <div class="col-span-12">
+                                            <label for="linkedin_profile" class="block text-sm font-medium text-gray-700">
+                                                Linkedin Profile </label>
+                                            {% render_field form.linkedin_profile id="linkedin_profile"  class+="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" %}
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <button type="submit" value="basic" name="type"
+                                    class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 m-6 sm:w-auto">Update<span
+                                        class="sr-only">Update</span></button>
+
+                                <!-- Privacy section -->
+                                <!-- table here -->
+
+                                <!-- This example requires Tailwind CSS v2.0+ -->
+
+
+                                <!-- custom table -->
+
+                            </form>
+                            <div>
+
+                            </div>
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_internship' student.id %}">
+                                {% csrf_token %}
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="sm:flex sm:items-center justify-between">
+                                        <div class="w-full sm:w-1/2">
+                                            <strong class="my-3">Internship Details</strong>
+                                            <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                                search</label>
+                                            <div class="mt-1 relative flex items-center">
+                                                <input type="text" name="search" id="search" data-table="order-table"
+                                                    class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                                <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                                    <kbd
+                                                        class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                                        ⌘K </kbd>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="mt-4 sm:flex sm:items-center justify-between">
+                                        {% render_field internship_form.company  placeholder="company"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field internship_form.role  placeholder="role"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field internship_form.stipend  placeholder="stipend"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field internship_form.intern_type  placeholder="type"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        <div class=" sm:ml-16 sm:flex-none">
+                                            <button type="submit" name="profileLink"
+                                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                                Add New</button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                        Company</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Role</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Stipend</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Type</th>
+
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for internship in internships %}
+                                                    <tr>
+
+
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ internship.company }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ internship.role }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ internship.stipend }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ internship.intern_type }}</td>
+
+                                                        <td
+                                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                            <a href="{% url 'edit_internship' internship.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                                <!-- More plans... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_placement' student.id %}">
+                                {% csrf_token %}
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="sm:flex sm:items-center justify-between">
+                                        <div class="w-full sm:w-1/2">
+                                            <strong class="my-3">Placement Details</strong>
+                                            <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                                search</label>
+                                            <div class="mt-1 relative flex items-center">
+                                                <input type="text" name="search" id="search" data-table="order-table"
+                                                    class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                                <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                                    <kbd
+                                                        class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                                        ⌘K </kbd>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="mt-4 sm:flex sm:items-center justify-between">
+                                        {% render_field placement_form.company  placeholder="company"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field placement_form.role  placeholder="role"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field placement_form.ctc  placeholder="CTC"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field placement_form.offer_type  placeholder="type"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        <div class=" sm:ml-16 sm:flex-none">
+                                            <button type="submit" name="profileLink"
+                                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                                Add New</button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                        Company</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Role</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        CTC</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Type</th>
+
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for placement in placements %}
+                                                    <tr>
+
+
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ placement.company }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ placement.role }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ placement.ctc }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ placement.offer_type }}</td>
+
+                                                        <td
+                                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                            <a href="{% url 'edit_placement' placement.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                                <!-- More plans... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                            <form class="divide-y divide-gray-200 lg:col-span-12 border border-gray-200  " method="POST"
+                                action="{% url 'add_project' student.id %}">
+                                {% csrf_token %}
+                                <div class="px-4 sm:px-6 lg:px-8">
+                                    <div class="sm:flex sm:items-center justify-between">
+                                        <div class="w-full sm:w-1/2">
+                                            <strong class="my-3">Project Details</strong>
+                                            <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                                search</label>
+                                            <div class="mt-1 relative flex items-center">
+                                                <input type="text" name="search" id="search" data-table="order-table"
+                                                    class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                                <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                                    <kbd
+                                                        class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                                        ⌘K </kbd>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="mt-4 sm:flex sm:items-center justify-between">
+                                        {% render_field project_form.description  placeholder="description"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field project_form.title  placeholder="title"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field project_form.tech  placeholder="tech"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field project_form.remarks  placeholder="Remarks"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        {% render_field project_form.project_type  placeholder="type"  class+="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" %}
+                                        <div class=" sm:ml-16 sm:flex-none">
+                                            <button type="submit" name="profileLink"
+                                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                                Add New</button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="-mx-4 mb-4 mt-12 ring-1 overflow-x-auto ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                        Description</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Title</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Tech</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Remarks</th>
+                                                    <th scope="col"
+                                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                        Type</th>
+
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for project in projects %}
+                                                    <tr>
+
+
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ project.description }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ project.title }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ project.tech }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ project.remarks }}</td>
+                                                        <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                            {{ project.project_type }}</td>
+
+                                                        <td
+                                                            class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                            <a href="{% url 'edit_project' project.id %}">
+                                                                <button type="button"
+                                                                    class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Update<span
+                                                                        class="sr-only">Update</span></button>
+                                                            </a>
+
+                                                        </td>
+                                                    </tr>
+
+                                                {% endfor %}
+
+
+                                                <!-- More plans... -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script>
+            (function () {
+                'use strict';
+
+                var TableFilter = (function () {
+                    var Arr = Array.prototype;
+                    var input;
+
+                    function onInputEvent(e) {
+                        input = e.target;
+                        var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
+                        Arr.forEach.call(table1, function (table) {
+                            Arr.forEach.call(table.tBodies, function (tbody) {
+                                Arr.forEach.call(tbody.rows, filter);
+                            });
+                        });
+                    }
+
+                    function filter(row) {
+                        var text = row.textContent.toLowerCase();
+                        //console.log(text);
+                        var val = input.value.toLowerCase();
+                        //console.log(val);
+                        row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                    }
+
+                    return {
+                        init: function () {
+                            var inputs = document.getElementsByClassName('table-filter');
+                            Arr.forEach.call(inputs, function (input) {
+                                input.oninput = onInputEvent;
+                            });
+                        }
+                    };
+
+                })();
+
+                TableFilter.init();
+            })();
+
+            const desktopImageInput = document.getElementById("desktop-user-photo")
+            const desktopImage = document.getElementById("desktopImage")
+            const mobileImageInput = document.getElementById("mobile-user-photo")
+            const mobileImage = document.getElementById("mobileImage")
+            mobileImageInput.onchange = evt => {
+                const [file] = mobileImageInput.files
+                if (file) {
+                    console.log("erhthe")
+                    mobileImage.src = URL.createObjectURL(file)
+                    desktopImage.src = URL.createObjectURL(file)
+
+                }
+            }
+            desktopImageInput.onchange = evt => {
+                const [file] = desktopImageInput.files
+                if (file) {
+                    desktopImage.src = URL.createObjectURL(file)
+                    mobileImage.src = URL.createObjectURL(file)
+
+                }
+            }
+        </script>
+    </body>
+
+</html>

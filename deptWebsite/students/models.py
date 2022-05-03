@@ -13,10 +13,11 @@ course_types = (
 
 class Student(models.Model):
     name = models.CharField(max_length=200)
+    roll_number = models.IntegerField()
     email = models.EmailField(max_length=200)
     batch = models.IntegerField()
     course = models.CharField(max_length=200, null=True, choices=course_types)
-    isAlumni = models.BooleanField()
+    is_alumni = models.BooleanField()
     image = models.ImageField(upload_to="students")
     linkedin_profile = models.URLField(max_length=200, null=True)
     department = models.ForeignKey(

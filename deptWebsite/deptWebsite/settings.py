@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "widget_tweaks",
     "students",
     "tinymce",
+    "academics",
     "slippers",
     "social_django",
     "register_login",

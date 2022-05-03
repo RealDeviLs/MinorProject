@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            media="all">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+        <title>Document</title>
+    </head>
+
+    <body>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success'%}
+                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script>
+                {% elif message.tags == 'info' %} <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}')
+                </script> {% elif message.tags == 'warning' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{  message | safe }}') </script>
+                {% elif message.tags == 'error' %} <script
+                    type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script> {% endif %} {% endfor %}
+        {% endif %} <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Add New {{ type }} </h3>
+                </div>
+
+
+                {% for form in nested_form.forms %}
+                    <div class="mt-5 md:mt-0 md:col-span-2">
+                        <form  method="POST"  enctype="multipart/form-data"  >
+                            {% csrf_token %}
+                            <div class="grid grid-cols-6 gap-6">
+
+                                {% for field in form %}
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="Description"
+                                            class="block text-sm font-medium text-gray-700">{{field.name}}</label>
+                                        {% render_field field id="Description"  class+="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %}
+                                    </div>
+
+                                {% endfor %}
+
+                                <div class="col-span-6 sm:col-span-3 mt-6">
+                                    <button type="submit"
+                                        class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Add
+                                        New</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+
+                    </div>
+
+
+                    {% if form.nested %}
+                        {% for child_form in form.nested.forms %}
+                            <div class="mt-5 md:mt-0 md:col-span-2">
+                                <form  method="POST"  enctype="multipart/form-data"  >
+                                    {% csrf_token %}
+                                    <div class="grid grid-cols-6 gap-6">
+
+                                        {% for field in child_form %}
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="Description"
+                                                    class="block text-sm font-medium text-gray-700">{{field.name}}</label>
+                                                {% render_field field id="Description"  class+="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %}
+                                            </div>
+
+                                        {% endfor %}
+
+                                        <div class="col-span-6 sm:col-span-3 mt-6">
+                                            <button type="submit"
+                                                class="inline-flex items-center rounded-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-30">Add
+                                                New</button>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+
+
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    </div>
+
+                    <!-- This example requires Tailwind CSS v2.0+ -->
+                    <div class="px-4 sm:px-6 lg:px-8">
+                        <div class="sm:flex sm:items-center justify-between mt-6">
+                            <div class="w-full sm:w-1/2">
+                                <strong class="my-3">Existing {{ type }}s</strong>
+                                <label for="search" class="block text-sm  font-medium text-gray-700">Quick
+                                    search</label>
+                                <div class="mt-1 relative flex items-center">
+                                    <input type="text" name="search" id="search" data-table="order-table"
+                                        class="table-filter shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md">
+                                    <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+                                        <kbd
+                                            class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                                            ⌘K </kbd>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="-mx-4 mb-4 mt-2 ring-1 ring-gray-300 sm:-mx-6 md:mx-0 md:rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-300 order-table table">
+                                <thead>
+                                    <tr>
+                                        {% for field in form %}
+                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                {{ field.name }}</th>
+                                        {% endfor %}
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for entry in table_data %}
+                                        <tr>
+
+                                            {% for key,value in entry.items %}
+                                                {% if forloop.counter > 2 %}
+                                                    <td class=" px-3 py-3.5 text-sm text-gray-500 lg:table-cell">
+                                                        {{ value }}</td>
+                                                {% endif %}
+                                            {% endfor %}
+
+                                            <td class="relative py-3.5 pl-3 pr-4 sm:pr-6 text-right text-sm font-medium">
+                                                <a href="{% url type entry.id %}">
+                                                    <button type="button"
+                                                        class="inline-flex items-center
+                                                            rounded-md border border-gray-300 bg-white
+                                                            px-3 py-2 text-sm font-medium leading-4
+                                                            text-gray-700 shadow-sm hover:bg-gray-50
+                                                            focus:outline-none focus:ring-2 focus:ring-indigo-500
+                                                            focus:ring-offset-2 disabled:cursor-not-allowed
+                                                            disabled:opacity-30">Update</button>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    <!-- More plans... -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- custom table -->
+
+                    <script>
+                        (function () {
+                            'use strict';
+
+                            var TableFilter = (function () {
+                                var Arr = Array.prototype;
+                                var input;
+
+                                function onInputEvent(e) {
+                                    input = e.target;
+                                    var table1 = document.getElementsByClassName(input.getAttribute('data-table'));
+                                    Arr.forEach.call(table1, function (table) {
+                                        Arr.forEach.call(table.tBodies, function (tbody) {
+                                            Arr.forEach.call(tbody.rows, filter);
+                                        });
+                                    });
+                                }
+
+                                function filter(row) {
+                                    var text = row.textContent.toLowerCase();
+                                    //console.log(text);
+                                    var val = input.value.toLowerCase();
+                                    //console.log(val);
+                                    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+                                }
+
+                                return {
+                                    init: function () {
+                                        var inputs = document.getElementsByClassName('table-filter');
+                                        Arr.forEach.call(inputs, function (input) {
+                                            input.oninput = onInputEvent;
+                                        });
+                                    }
+                                };
+
+                            })();
+
+                            TableFilter.init();
+                        })();
+                    </script>
+                    </body>
+
+                    </html>
