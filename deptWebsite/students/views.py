@@ -9,7 +9,7 @@ from .models import Internship, Placement, Project, Student
 
 
 def alumni_page(request):
-    alumni = Student.on_site.filter(is_aumni=True)
+    alumni = Student.on_site.filter(is_alumni=True)
     if request.method == "POST":
         string = request.POST["queryString"]
         if string is not None:
