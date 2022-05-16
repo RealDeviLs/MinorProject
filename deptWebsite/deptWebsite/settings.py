@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     "students",
     "tinymce",
     "academics",
-    "slippers",
     "social_django",
     "register_login",
     "django_cleanup.apps.CleanupConfig",

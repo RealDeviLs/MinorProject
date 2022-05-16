@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
+
 
 <!--
   This example requires Tailwind CSS v2.0+
@@ -21,26 +20,7 @@
 
     -->
 
-<head>
-    <title>Department of IT</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
-    {{children}}
-    <title>Document</title>
-</head>
+
 
 <body>
     <div>
@@ -155,5 +135,4 @@
         </ul>
 </body>
 
-</html>
 {% endblock content %}
