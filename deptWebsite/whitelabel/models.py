@@ -48,4 +48,4 @@ class HeroPhotos(models.Model):
     )
 
     def __str__(self):
-        return f"{self.department.title} {self.pk}"
+        return f"{self.dept.department.name} {self.pk}"

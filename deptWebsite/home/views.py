@@ -12,13 +12,15 @@ from deptWebsite.settings import EMAIL_HOST_USER
 
 from .forms import DeptNewsForm
 from .models import DeptNews
-
+from academics.models import AcademicProgram
 
 def home_page(request):
     print(get_current_site(request))
     print(settings.SITE_ID)
     basic_data = WhiteLabel.on_site.first()
-    data = {"basic": basic_data}
+    news = DeptNews.on_site.all()
+    programmes = AcademicProgram.on_site.all()
+    data = {"basic": basic_data, "news": news, "programmes": programmes}
     return render(request, template_name="index.html", context=data)
 
 
