@@ -740,6 +740,8 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <!-- Odd row -->
+                                                                    {% for i in responsibilities %}
+
                                                                     <tr class="bg-gray-50">
                                                                         <td
                                                                             class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -758,6 +760,8 @@
                                                                             {{i.date_end}}
                                                                         </td>
                                                                     </tr>
+                                                                    {% endfor %}
+
 
                                                                     <!-- More people... -->
                                                                 </tbody>

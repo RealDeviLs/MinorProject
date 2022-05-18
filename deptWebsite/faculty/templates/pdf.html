@@ -312,5 +312,71 @@
 </table>
 <br><br>
 
+<h1>Admin. Responsiblities</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>
+            Position Held</th>
+        <th>
+            Organization</th>
+        <th>
+            From</th>
+        <th>
+            To</th>
+    </tr>
+
+    {% for i in responsibilities %}
+
+    <tr>
+        <td>
+            {{i.position}}
+        </td>
+        <td>
+            {{i.organization}}
+        </td>
+        <td>
+            {{i.date_start}}
+        </td>
+        <td>
+            {{i.date_end}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br><br>
+
+
+<h1>Awards and Honours</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>
+            Title</th>
+        <th>
+            Activity</th>
+        <th>
+            Given by</th>
+        <th>
+            Year</th>
+    </tr>
+
+    {% for i in awards %}
+    <tr>
+        <td>
+            {{i.title}}
+        </td>
+        <td>
+            {{i.activity}}
+            Technician</td>
+        <td>
+            {{i.given_by}}
+        </td>
+        <td>
+            {{i.year}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
 
 {% endblock content %}
