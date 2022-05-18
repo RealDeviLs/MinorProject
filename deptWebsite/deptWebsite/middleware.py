@@ -32,6 +32,6 @@ def send_person_id_to_base(request):
     if request.user.is_authenticated:
         person = DeptPerson.on_site.filter(user=request.user).first()
         if person:
-            return {"person": person.id, "department": department}
+            return {"person_id": person.id, "department": department}
 
-    return {"person": None, "department": department}
+    return {"person_id": None, "department": department}

@@ -11,6 +11,12 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://unpkg.com/alpinejs" defer></script>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+            media="all">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script>
             tailwind.config = {
                 theme: {
@@ -120,8 +126,8 @@
                                 class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                                 Alumni </a>
                             {% if request.user.is_authenticated  %}
-                                {% if person %}
-                                    <a href="{% url 'edit_profile' person %}"
+                                {% if person_id %}
+                                    <a href="{% url 'edit_profile' person_id %}"
                                         class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Dashboard </a>
                                 {% endif %}
                                 <a href="{% url 'accounts:log_out' %}"
@@ -217,8 +223,8 @@
                     class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6">Alumni</a>
 
                 {% if request.user.is_authenticated  %}
-                    {% if person %}
-                        <a href="{% url 'edit_profile' person %}"
+                    {% if person_id %}
+                        <a href="{% url 'edit_profile' person_id %}"
                             class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6">Dashboard </a>
                     {% endif %}
                     <a href="{% url 'accounts:log_out' %}"

@@ -1,24 +1,8 @@
-<!DOCTYPE html>
+
+{% extends "base.html" %}
 {% load static %}
-{% load widget_tweaks %}
-
-<html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
-        <script src="https://unpkg.com/alpinejs" defer></script>
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-            media="all">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-        <title>Document</title>
-    </head>
-
-    <body>
+{% block content %}
+    {% load widget_tweaks %}
          <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
@@ -57,6 +41,4 @@
         <!-- custom table -->
 
 
-    </body>
-
-</html>
+{% endblock content %}

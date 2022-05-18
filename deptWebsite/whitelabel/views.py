@@ -29,6 +29,7 @@ def create_dept(request):
     clubs = SocietyClub.objects.filter(dept=white_label)
     club_form = SocietyClubForm()
     data = {
+        "department":white_label,
         "form": white_label_form,
         "clubs": clubs,
         "club_form": club_form,
