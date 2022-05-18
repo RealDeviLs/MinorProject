@@ -34,4 +34,4 @@ def send_person_id_to_base(request):
         if person:
             return {"person": person.id, "department": department}
 
-    return {"person": 0, "department": department}
+    return {"person": None, "department": department}
