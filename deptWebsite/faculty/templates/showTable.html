@@ -19,18 +19,7 @@
     </head>
 
     <body>
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success'%}
-                    <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script>
-                {% elif message.tags == 'info' %} <script type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}')
-                </script> {% elif message.tags == 'warning' %} <script
-                    type=text/javascript>toastr.{{ message.tags }}('{{  message | safe }}') </script>
-                {% elif message.tags == 'error' %} <script
-                    type=text/javascript>toastr.{{ message.tags }}('{{ message | safe }}') </script> {% endif %} {% endfor %}
-        {% endif %} <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
-
-
+         <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
             <div class="md:grid md:grid-cols-3 md:gap-6">
                 <div class="md:col-span-1">
                     <h3 class="text-lg font-medium leading-6 text-gray-900">Add New {{ type }} </h3>
