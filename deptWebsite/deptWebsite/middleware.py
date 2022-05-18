@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.contrib.sites.models import Site
+from faculty.models import DeptPerson
+from whitelabel.models import WhiteLabel
 
 
 def DynamicSiteMiddleware(get_response):
@@ -22,3 +24,13 @@ def DynamicSiteMiddleware(get_response):
         return response
 
     return middleware
+
+
+def send_person_id_to_base(request):
+
+    department = WhiteLabel.on_site.first()
+    if request.user.is_authenticated:
+        person = DeptPerson.on_site.filter(user=request.user).first()
+
+        return {"person": person.id, "department": department}
+    return {"person": 0, "department": department}

@@ -15,7 +15,7 @@ def show_academic_programs(request):
     user = request.user
     person = DeptPerson.on_site.filter(user=user).first()
 
-    if person.dept_edit_access:
+    if not person.dept_edit_access:
         return render(
             request,
             template_name="error.html",
@@ -41,7 +41,7 @@ def show_academic_programs(request):
     table_entries = []
     for i in table_data:
         table_entries.append(vars(i))
-    data = {"form": form, "table_data": table_entries, "type": "edit_activity"}
+    data = {"form": form, "table_data": table_entries, "type": "edit_academic"}
     return render(request, template_name="showTable.html", context=data)
 
 
@@ -54,12 +54,12 @@ def edit_academic_program(request, id):
     if request.method == "POST":
         if request.POST.get("delete") == "yes":
             instance.delete()
-            return redirect("edit_activity", id)
+            return redirect("edit_academic", id)
         data = AcademicProgramForm(request.POST, instance=instance)
         if data.is_valid():
             data.save()
             messages.success(request, "Saved")
-            return redirect("edit_activity", id)
+            return redirect("edit_academic", id)
         else:
             messages.error(request, f"failed to save, {data.errors}")
 

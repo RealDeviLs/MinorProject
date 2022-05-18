@@ -23,7 +23,7 @@ def show_infra(request):
     user = request.user
     person = DeptPerson.on_site.filter(user=user).first()
 
-    if person.dept_edit_access:
+    if not person.dept_edit_access:
         return render(
             request,
             template_name="error.html",

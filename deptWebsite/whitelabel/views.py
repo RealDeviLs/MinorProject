@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
+from students.models import Student
 
 from .forms import SocietyClubForm, WhiteLabelForm
 from .models import SocietyClub, WhiteLabel
@@ -18,6 +19,7 @@ def create_dept(request):
 
         else:
             messages.error(request, f"failed to save, {data.errors}")
+    batches = Student.on_site.all().values("batch").distinct()
 
     white_label = WhiteLabel.on_site.first()
     if white_label:
@@ -30,6 +32,7 @@ def create_dept(request):
         "form": white_label_form,
         "clubs": clubs,
         "club_form": club_form,
+        "batches": batches,
     }
     return render(request, template_name="create_dept.html", context=data)
 
