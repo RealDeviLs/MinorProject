@@ -7,7 +7,24 @@ class ActivityForm(forms.ModelForm):
     class Meta:
         model = Activity
         exclude = ("department", "on_site")
-        # widgets = {"department_description": Textarea(attrs={ "rows": 5})}
+        widgets = {
+            "date_from": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+            "date_to": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+        }
 
 
 class ActivityImageForm(forms.ModelForm):

@@ -7,6 +7,8 @@ from tinymce.models import HTMLField
 
 # Create your models here.
 
+person_type = (("faculty", "faculty"), ("support", "support"))
+
 
 class DeptPerson(models.Model):
 
@@ -18,6 +20,7 @@ class DeptPerson(models.Model):
     email = models.EmailField()
     image = models.ImageField(upload_to="department_persons")
     research_profile = models.CharField(max_length=200)
+    person_type = models.CharField(max_length=25, choices=person_type)
     department = models.ForeignKey(
         Site, on_delete=models.CASCADE, related_name="person"
     )

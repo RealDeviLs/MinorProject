@@ -72,6 +72,24 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         exclude = ["person"]
+        widgets = {
+            "date_start": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+            "date_end": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+        }
 
 
 class EventForm(forms.ModelForm):
@@ -102,12 +120,40 @@ class PatentForm(forms.ModelForm):
     class Meta:
         model = Patent
         exclude = ["person"]
+        widgets = {
+            "date": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+        }
 
 
 class ResponsibilityForm(forms.ModelForm):
     class Meta:
         model = Responsibility
         exclude = ["person"]
+        widgets = {
+            "date_start": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+            "date_end": forms.DateInput(
+                format=("%d-%m-%Y"),
+                attrs={
+                    "class": "myDateClass",
+                    "placeholder": "Select a date",
+                    "type": "date",
+                },
+            ),
+        }
 
 
 class AwardForm(forms.ModelForm):
