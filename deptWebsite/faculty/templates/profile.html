@@ -8,800 +8,935 @@
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <title>Document</title>
     </head> -->
-    {% extends "base.html" %}
-    {% load static %}
-    {% block content %}
-    <body class="h-full bg-gray-100">
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="h-full bg-gray-100">
 
 
-        <div class="min-h-full">
+    <div class="min-h-full">
 
 
-            <main class="py-10">
-                <div
-                    class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
-                    <div class="flex items-center space-x-5">
-                        <div class="flex-shrink-0">
-                            <div class="relative">
-                                <img class="h-60 w-60 rounded-full" src="{{profile.image.url}}" alt="{{profile.name}}">
-                                <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 class="text-2xl font-bold text-gray-900">{{profile.name}}</h1>
-                            <p class="text-sm font-medium text-gray-500">{{profile.designation}}</p>
+        <main class="py-10">
+            <div
+                class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8">
+                <div class="flex items-center space-x-5">
+                    <div class="flex-shrink-0">
+                        <div class="relative">
+                            <img class="h-60 w-60 rounded-full" src="{{profile.image.url}}" alt="{{profile.name}}">
+                            <span class="absolute inset-0 shadow-inner rounded-full" aria-hidden="true"></span>
                         </div>
                     </div>
-
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">{{profile.name}}</h1>
+                        <p class="text-sm font-medium text-gray-500">{{profile.designation}}</p>
+                    </div>
                 </div>
 
-                <div
-                    class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
-                    <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-                        <!-- Description list-->
-                        <section aria-labelledby="applicant-information-title">
-                            <div class="bg-white shadow sm:rounded-lg">
-                                <div class="px-4 py-5 sm:px-6">
-                                    <h2 id="applicant-information-title" class="text-lg leading-6 font-medium text-gray-900">Personal
-                                        Information</h2>
-                                    <!-- <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p> -->
-                                </div>
-                                <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                                    <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                                        <div class="sm:col-span-1">
-                                            <dt class="text-sm font-medium text-gray-500">Department</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">{{profile.department.name}}</dd>
-                                        </div>
-                                        <div class="sm:col-span-1">
-                                            <dt class="text-sm font-medium text-gray-500">Email address</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">{{profile.email}}</dd>
-                                        </div>
-                                        <div class="sm:col-span-1">
-                                            <dt class="text-sm font-medium text-gray-500">Address</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">{{profile.address|safe}}</dd>
-                                        </div>
-                                        <div class="sm:col-span-1">
-                                            <dt class="text-sm font-medium text-gray-500">Phone</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">{{profile.phone}}</dd>
-                                        </div>
-                                        <div class="sm:col-span-2">
-                                            <dt class="text-sm font-medium text-gray-500">Qualification</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">{{profile.qualification|safe}}</dd>
-                                        </div>
-                                        <div class="sm:col-span-2">
-                                            <dt class="text-sm font-medium text-gray-500">Attachments</dt>
-                                            <dd class="mt-1 text-sm text-gray-900">
-                                                <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
-                                                    <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                                                        <div class="w-0 flex-1 flex items-center">
-                                                            <!-- Heroicon name: solid/paper-clip -->
-                                                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                                <path fill-rule="evenodd"
-                                                                    d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
-                                                                    clip-rule="evenodd" />
-                                                            </svg>
-                                                            <span class="ml-2 flex-1 w-0 truncate"> profile.pdf </span>
-                                                        </div>
-                                                        <div class="ml-4 flex-shrink-0">
-                                                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500"> Download </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                </div>
+            </div>
 
+            <div
+                class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
+                <div class="space-y-6 lg:col-start-1 lg:col-span-2">
+                    <!-- Description list-->
+                    <section aria-labelledby="applicant-information-title">
+                        <div class="bg-white shadow sm:rounded-lg">
+                            <div class="px-4 py-5 sm:px-6">
+                                <h2 id="applicant-information-title"
+                                    class="text-lg leading-6 font-medium text-gray-900">Personal
+                                    Information</h2>
+                                <!-- <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p> -->
                             </div>
-                        </section>
-
-                        <!-- Comments-->
-                        <div class="flex flex-wrap" id="tabs-id">
-                            <div class="w-full">
-
-                                <p id="heading"
-                                    class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-pink-600">
-                                    <i class="fas fa-space-shuttle text-base mr-1"></i> Profile Links
-                                </p>
-                                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                                    <div class="px-4 py-5 flex-auto">
-                                        <div class="tab-content tab-space">
-
-                                            <!-- Profile Links -->
-                                            <div class="block" id="profile-links">
-                                                <!-- This example requires Tailwind CSS v2.0+ -->
-                                                <p>
-                                                    {{profile_links|safe}}
-                                                </p>
-                                            </div>
-
-                                            <!-- Research Profile -->
-                                            <div class="hidden" id="research-profile">
-                                                <p>
-                                                    {{research_info|safe}}
-                                                </p>
-                                            </div>
-
-                                            <!-- Journal Publications -->
-                                            <div class="hidden" id="journal-publications">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Journal</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Publication</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in journal_publications %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.date}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.journal}}</td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.description|safe}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                            <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                                <dl class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">Department</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">{{profile.department.name}}</dd>
+                                    </div>
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">Email address</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">{{profile.email}}</dd>
+                                    </div>
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">Address</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">{{profile.address|safe}}</dd>
+                                    </div>
+                                    <div class="sm:col-span-1">
+                                        <dt class="text-sm font-medium text-gray-500">Phone</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">{{profile.phone}}</dd>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <dt class="text-sm font-medium text-gray-500">Qualification</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">{{profile.qualification|safe}}</dd>
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <dt class="text-sm font-medium text-gray-500">Attachments</dt>
+                                        <dd class="mt-1 text-sm text-gray-900">
+                                            <ul role="list"
+                                                class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                                                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                                                    <div class="w-0 flex-1 flex items-center">
+                                                        <!-- Heroicon name: solid/paper-clip -->
+                                                        <svg class="flex-shrink-0 h-5 w-5 text-gray-400"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                            fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                        <span class="ml-2 flex-1 w-0 truncate"> profile.pdf </span>
                                                     </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <!-- Conference  Publications -->
-                                            <div class="hidden" id="conference-publications">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Conference</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Publication</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in conference_publications %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.date}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.conference}}</td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.description|safe}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
+                                                    <div class="ml-4 flex-shrink-0">
+                                                        <a href="{% url 'pdf' profile.id %}"
+                                                            class="font-medium text-blue-600 hover:text-blue-500">
+                                                            Download </a>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
 
-                                            <!-- Book/Chapter  Publications -->
-                                            <div class="hidden" id="book-publications">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Type</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Title</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Publisher</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Authors</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                ISBN/ISSN No.</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in book_publications %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                    {{i.book_type}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.publisher}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.authors}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.isbn_or_issn}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        </div>
+                    </section>
 
-                                            <!-- Research Projects -->
-                                            <div class="hidden" id="research-projects">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Role</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Project Type</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Title</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Funding Agency</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                From</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                To</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Amount</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Status</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Co-Investigator
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in research_projects %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.role}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.project_type}}
-                                                                                    Technician</td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.funding_agency}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_start}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_end}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.amount}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_investigator}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                    <!-- Comments-->
+                    <div class="flex flex-wrap" id="tabs-id">
+                        <div class="w-full">
 
+                            <p id="heading"
+                                class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-pink-600">
+                                <i class="fas fa-space-shuttle text-base mr-1"></i> Profile Links
+                            </p>
+                            <div
+                                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                                <div class="px-4 py-5 flex-auto">
+                                    <div class="tab-content tab-space">
 
-                                            <!-- Events Organized -->
-                                            <div class="hidden" id="events-organized">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Category</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Type</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Title</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Venue</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                From</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                To</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Designation
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in events %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                    {{i.category}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.event_type}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.venue}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_start}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_end}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.designation}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- Professional Affiliations -->
-                                            <div class="hidden" id="professional-affiliations">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Designation</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Organization
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in affilations %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                    {{i.designation}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.organization}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- PhD Supervised -->
-                                            <div class="hidden" id="PhD-supervised">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Scholar Name</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Research Topic</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Status</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Co-Supervisor
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in phd_scholars %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                    {{i.student_name}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.research_topic}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_supervisor}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- Even row -->
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- PG Dissertation Guided -->
-                                            <div class="hidden" id="PG-dissertation-guided">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Student Name</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Dissertation Title</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Status</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Co-Supervisor
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in pg_students %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                    {{i.student_name}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.dissertation_title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.co_superviser}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- Even row -->
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <!-- Patents -->
-                                            <div class="hidden" id="patents">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Name</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Reg./Ref. No.</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Date of Award/Filling</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Organization</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Status
-                                                                            </th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in patents %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.reg_no}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.organization}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.status}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- Admin. Responsiblities -->
-                                            <div class="hidden" id="admin-responsiblities">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Position Held</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Organization</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                From</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                To</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        <tr class="bg-gray-50">
-                                                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                                                {{i.position}}
-                                                                            </td>
-                                                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.organization}}
-                                                                            </td>
-                                                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_start}}
-                                                                            </td>
-                                                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.date_end}}
-                                                                            </td>
-                                                                        </tr>
-
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- Award and Honours -->
-                                            <div class="hidden" id="award-honours">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <table class="min-w-full divide-y divide-gray-200">
-                                                                    <thead class="bg-gray-50">
-                                                                        <tr>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Title</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Activity</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Given by</th>
-                                                                            <th scope="col"
-                                                                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                Year</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- Odd row -->
-                                                                        {% for i in awards %}
-                                                                            <tr class="bg-gray-50">
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{i.title}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.activity}}
-                                                                                    Technician</td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.given_by}}
-                                                                                </td>
-                                                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{i.year}}
-                                                                                </td>
-                                                                            </tr>
-                                                                        {% endfor %}
-                                                                        <!-- More people... -->
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
+                                        <!-- Profile Links -->
+                                        <div class="block" id="profile-links">
+                                            <!-- This example requires Tailwind CSS v2.0+ -->
+                                            <p>
+                                                {{profile_links|safe}}
+                                            </p>
                                         </div>
+
+                                        <!-- Research Profile -->
+                                        <div class="hidden" id="research-profile">
+                                            <p>
+                                                {{research_info|safe}}
+                                            </p>
+                                        </div>
+
+                                        <!-- Journal Publications -->
+                                        <div class="hidden" id="journal-publications">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Journal</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Publication</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in journal_publications %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.journal}}</td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.description|safe}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- Conference  Publications -->
+                                        <div class="hidden" id="conference-publications">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Conference</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Publication</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in conference_publications %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.conference}}</td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.description|safe}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Book/Chapter  Publications -->
+                                        <div class="hidden" id="book-publications">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Type</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Title</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Publisher</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Authors</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            ISBN/ISSN No.</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in book_publications %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.book_type}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.publisher}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.authors}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.isbn_or_issn}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Research Projects -->
+                                        <div class="hidden" id="research-projects">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Role</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Project Type</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Title</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Funding Agency</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            From</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            To</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Amount</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Status</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Co-Investigator
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in research_projects %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.role}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.project_type}}
+                                                                            Technician</td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.funding_agency}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_start}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_end}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.amount}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.status}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.co_investigator}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Events Organized -->
+                                        <div class="hidden" id="events-organized">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Category</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Type</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Title</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Venue</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            From</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            To</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Designation
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in events %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.category}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.event_type}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.venue}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_start}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_end}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.designation}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Professional Affiliations -->
+                                        <div class="hidden" id="professional-affiliations">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Designation</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Organization
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in affilations %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.designation}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.organization}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- PhD Supervised -->
+                                        <div class="hidden" id="PhD-supervised">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Scholar Name</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Research Topic</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Status</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Co-Supervisor
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in phd_scholars %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.student_name}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.research_topic}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.status}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.co_supervisor}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- Even row -->
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- PG Dissertation Guided -->
+                                        <div class="hidden" id="PG-dissertation-guided">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Student Name</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Dissertation Title</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Status</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Co-Supervisor
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in pg_students %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.student_name}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.dissertation_title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.status}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.co_superviser}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- Even row -->
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- Patents -->
+                                        <div class="hidden" id="patents">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Name</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Reg./Ref. No.</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Date of Award/Filling</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Organization</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Status
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in patents %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.reg_no}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.organization}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.status}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Admin. Responsiblities -->
+                                        <div class="hidden" id="admin-responsiblities">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Position Held</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Organization</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            From</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            To</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.position}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.organization}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_start}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.date_end}}
+                                                                        </td>
+                                                                    </tr>
+
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Award and Honours -->
+                                        <div class="hidden" id="award-honours">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                                    <div
+                                                        class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead class="bg-gray-50">
+                                                                    <tr>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Title</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Activity</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Given by</th>
+                                                                        <th scope="col"
+                                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                                            Year</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <!-- Odd row -->
+                                                                    {% for i in awards %}
+                                                                    <tr class="bg-gray-50">
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                                            {{i.title}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.activity}}
+                                                                            Technician</td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.given_by}}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{i.year}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {% endfor %}
+                                                                    <!-- More people... -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            function changeAtiveTab(event, tabID, heading) {
-                                // let element = event.target;
-                                // while (element.nodeName !== "A") {
-                                //   element = element.parentNode;
-                                // }
-                                // ulElement = element.parentNode.parentNode;
-                                // aElements = ulElement.querySelectorAll("li > a");
-                                tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
-                                for (let i = 0; i < tabContents.length; i++) {
-                                    tabContents[i].classList.add("hidden");
-                                    tabContents[i].classList.remove("block");
-                                }
-                                document.getElementById(tabID).classList.remove("hidden");
-                                document.getElementById(tabID).classList.add("block");
-                                document.getElementById('heading').textContent = heading;
-                            }
-                        </script>
-
                     </div>
+                    <script type="text/javascript">
+                        function changeAtiveTab(event, tabID, heading) {
+                            // let element = event.target;
+                            // while (element.nodeName !== "A") {
+                            //   element = element.parentNode;
+                            // }
+                            // ulElement = element.parentNode.parentNode;
+                            // aElements = ulElement.querySelectorAll("li > a");
+                            tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+                            for (let i = 0; i < tabContents.length; i++) {
+                                tabContents[i].classList.add("hidden");
+                                tabContents[i].classList.remove("block");
+                            }
+                            document.getElementById(tabID).classList.remove("hidden");
+                            document.getElementById(tabID).classList.add("block");
+                            document.getElementById('heading').textContent = heading;
+                        }
+                    </script>
 
-                    <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
-                        <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
-                            <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Quick Links</h2>
-
-
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'profile-links','Profile Links')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Profile Links</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'research-profile','Research Profile')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Research Profile</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'journal-publications','Journal Publications')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Journal Publications</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'conference-publications','Conference Publications')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Conference Publications</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'book-publications','Book/Chapter Publications')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Book/Chapter Publications</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'research-projects','Research Projects')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Research Projects</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'events-organized','Events Organized')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Events Organized</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button"
-                                    onclick="changeAtiveTab(event,'professional-affiliations','Professional Affiliations')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Professional Affiliations</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'PhD-supervised','PhD Supervised')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    PhD Supervised</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'PG-dissertation-guided','PG Dissertation Guided')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    PG Dissertation Guided</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'patents','Patents')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Patents</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'admin-responsiblities','Admin. Responsiblities')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Admin. Responsiblities</button>
-                            </div>
-                            <div class="mt-6 flex flex-col justify-stretch">
-                                <button type="button" onclick="changeAtiveTab(event,'award-honours','Award and Honours')"
-                                    class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Award and Honours</button>
-                            </div>
-                        </div>
-                    </section>
                 </div>
-            </main>
-        </div>
+
+                <section aria-labelledby="timeline-title" class="lg:col-start-3 lg:col-span-1">
+                    <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:px-6">
+                        <h2 id="timeline-title" class="text-lg font-medium text-gray-900">Quick Links</h2>
 
 
-    </body>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'profile-links','Profile Links')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Profile Links</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'research-profile','Research Profile')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Research Profile</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'journal-publications','Journal Publications')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Journal Publications</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'conference-publications','Conference Publications')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Conference Publications</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'book-publications','Book/Chapter Publications')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Book/Chapter Publications</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'research-projects','Research Projects')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Research Projects</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'events-organized','Events Organized')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Events Organized</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'professional-affiliations','Professional Affiliations')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Professional Affiliations</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'PhD-supervised','PhD Supervised')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                PhD Supervised</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'PG-dissertation-guided','PG Dissertation Guided')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                PG Dissertation Guided</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'patents','Patents')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Patents</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button"
+                                onclick="changeAtiveTab(event,'admin-responsiblities','Admin. Responsiblities')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Admin. Responsiblities</button>
+                        </div>
+                        <div class="mt-6 flex flex-col justify-stretch">
+                            <button type="button" onclick="changeAtiveTab(event,'award-honours','Award and Honours')"
+                                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Award and Honours</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+
+</body>
 {% endblock content %}
 <!-- </html> -->

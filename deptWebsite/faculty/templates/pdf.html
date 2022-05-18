@@ -1,0 +1,316 @@
+{% load static %}
+{% block content %}
+<img src="{{profile.image.url}}" alt="" />
+
+<h1>Name : {{profile.name}}</h1>
+<h1>Designation : {{profile.designation}}</h1>
+<h1>Department : {{profile.department.name}}</h1>
+<h1>Qualification : {{profile.qualification|safe}}</h1>
+<h1>Email : {{profile.email}}</h1>
+
+<h1>{{research_info|safe}}</h1>
+<h1>Other Profile Links : {{profile_links|safe}}</h1>
+<br>
+<br>
+<h1>Journal Publications</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Year</th>
+        <th>Journal</th>
+        <th>Publication</th>
+    </tr>
+
+    {% for i in journal_publications %}
+    <tr>
+        <td>{{i.date}}</td>
+        <td>{{i.journal}}</td>
+        <td>{{i.description|safe}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<br>
+
+<h1>Conference Publications</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Year</th>
+        <th>Conference</th>
+        <th>Publication</th>
+    </tr>
+
+    {% for i in conference_publications %}
+    <tr>
+        <td>{{i.date}}</td>
+        <td>{{i.conference}}</td>
+        <td>{{i.description|safe}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+<h1>Book/Chapter Publications</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Publisher</th>
+        <th>Authors</th>
+        <th>ISBN/ISSN No.</th>
+        <th>Year</th>
+    </tr>
+
+    {% for i in book_publications %}
+    <tr>
+        <td>
+            {{i.book_type}}
+        </td>
+        <td>
+            {{i.title}}
+        </td>
+        <td>
+            {{i.publisher}}
+        </td>
+        <td>
+            {{i.authors}}
+        </td>
+        <td>
+            {{i.isbn_or_issn}}
+        </td>
+        <td>
+            {{i.date}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+<br><br>
+<h1>Research Projects</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Role</th>
+        <th>Project Type</th>
+        <th>Title</th>
+        <th>Funding Agency</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Co-Investigator</th>
+    </tr>
+
+    {% for i in research_projects %}
+    <tr>
+        <td>
+            {{i.role}}
+        </td>
+        <td>
+            {{i.project_type}}
+            Technician</td>
+        <td>
+            {{i.title}}
+        </td>
+        <td>
+            {{i.funding_agency}}
+        </td>
+        <td>
+            {{i.date_start}}
+        </td>
+        <td>
+            {{i.date_end}}
+        </td>
+        <td>
+            {{i.amount}}
+        </td>
+        <td>
+            {{i.status}}
+        </td>
+        <td>
+            {{i.co_investigator}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+<br><br>
+<h1>Events Organized</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Title</th>
+        <th>Venue</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Designation</th>
+    </tr>
+
+    {% for i in events %}
+    <tr>
+        <td>
+            {{i.category}}
+        </td>
+        <td>
+            {{i.event_type}}
+        </td>
+        <td>
+            {{i.title}}
+        </td>
+        <td>
+            {{i.venue}}
+        </td>
+        <td>
+            {{i.date_start}}
+        </td>
+        <td>
+            {{i.date_end}}
+        </td>
+        <td>
+            {{i.designation}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+<h1>Professional Affiliations</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>Designation</th>
+        <th>Organization</th>
+    </tr>
+
+    {% for i in affilations %}
+    <tr class="bg-gray-50">
+        <td>
+            {{i.designation}}
+        </td>
+        <td>
+            {{i.organization}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+<h1>Phd Supervised</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>
+            Scholar Name</th>
+        <th>
+            Research Topic</th>
+        <th>
+            Status</th>
+        <th>
+            Year</th>
+        <th>
+            Co-Supervisor
+        </th>
+    </tr>
+
+    {% for i in phd_scholars %}
+    <tr>
+        <td>
+            {{i.student_name}}
+        </td>
+        <td>
+            {{i.research_topic}}
+        </td>
+        <td>
+            {{i.status}}
+        </td>
+        <td>
+            {{i.date}}
+        </td>
+        <td>
+            {{i.co_supervisor}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+<h1>PG Dissertation Guided</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>
+            Student Name</th>
+        <th>
+            Dissertation Title</th>
+        <th>
+            Status</th>
+        <th>
+            Year</th>
+        <th>
+            Co-Supervisor
+        </th>
+    </tr>
+
+    {% for i in pg_students %}
+    <tr>
+        <td>
+            {{i.student_name}}
+        </td>
+        <td>
+            {{i.dissertation_title}}
+        </td>
+        <td>
+            {{i.status}}
+        </td>
+        <td>
+            {{i.date}}
+        </td>
+        <td>
+            {{i.co_superviser}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+<h1>Patents</h1>
+<table style="border: 1px solid black; padding: 2px;">
+    <tr>
+        <th>
+            Name</th>
+        <th>
+            Reg./Ref. No.</th>
+        <th>
+            Date of Award/Filling</th>
+        <th>
+            Organization</th>
+        <th>
+            Status
+        </th>
+    </tr>
+
+    {% for i in patents %}
+    <tr>
+        <td>
+            {{i.title}}
+        </td>
+        <td>
+            {{i.reg_no}}
+        </td>
+        <td>
+            {{i.date}}
+        </td>
+        <td>
+            {{i.organization}}
+        </td>
+        <td>
+            {{i.status}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+{% endblock content %}

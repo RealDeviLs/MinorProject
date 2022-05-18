@@ -30,6 +30,7 @@ from .views import (
     show_phd,
     show_projects,
     show_responsibility,
+    GeneratePdf
 )
 
 urlpatterns = [
@@ -116,4 +117,6 @@ urlpatterns = [
     path("profile/edit/award/<int:id>", edit_award, name="Awards"),
     path("profile/add/profile_link", add_profile_link, name="add_profile_link"),
     path("profile/add/research_info", add_research_info, name="add_research_profile"),
+    path('profile/<int:id>/pdf/', GeneratePdf.as_view(),name="pdf"), 
+
 ]

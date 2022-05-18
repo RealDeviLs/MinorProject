@@ -1,5 +1,8 @@
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.http import HttpResponse
+from django.views.generic import View
+from .pdf import html_to_pdf 
 
 from .forms import (
     AffilationForm,
@@ -79,6 +82,45 @@ def faculty_detail(request, id):
     }
     return render(request, template_name="profile.html", context=data)
 
+class GeneratePdf(View):
+     def get(self, request, id, *args, **kwargs):
+        # getting the template
+        profile = get_object_or_404(DeptPerson, id=id)
+        profile_links = (
+            profile.profile_links.content if hasattr(profile, "profile_links") else None
+        )
+        research_info = (
+            profile.research_info.content if hasattr(profile, "research_info") else None
+        )
+        journal_publications = profile.journal_publications.all()
+        conference_publications = profile.conference_publications.all()
+        book_publications = profile.book_publications.all()
+        research_projects = profile.projects.all()
+        events = profile.events.all()
+        affilations = profile.affilations.all()
+        phd_scholars = profile.phd_scholars.all()
+        pg_students = profile.pg_students.all()
+        patents = profile.patents.all()
+        responsibilities = profile.responsibilities.all()
+        data = {
+            "profile": profile,
+            "profile_links": profile_links,
+            "research_info": research_info,
+            "journal_publications": journal_publications,
+            "conference_publications": conference_publications,
+            "book_publications": book_publications,
+            "research_projects": research_projects,
+            "events": events,
+            "affilations": affilations,
+            "phd_scholars": phd_scholars,
+            "pg_students": pg_students,
+            "patents": patents,
+            "responsibilities": responsibilities,
+            "awards": profile.awards.all(),
+        }
+        pdf = html_to_pdf('pdf.html',data)
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
 
 def edit_basic(request, id):
 
