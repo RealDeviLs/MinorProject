@@ -13,6 +13,7 @@ from deptWebsite.settings import EMAIL_HOST_USER
 from .forms import DeptNewsForm
 from .models import DeptNews
 from academics.models import AcademicProgram
+from students.models import Placement
 
 def home_page(request):
     print(get_current_site(request))
@@ -20,7 +21,8 @@ def home_page(request):
     basic_data = WhiteLabel.on_site.first()
     news = DeptNews.on_site.all()
     programmes = AcademicProgram.on_site.all()
-    data = {"basic": basic_data, "news": news, "programmes": programmes}
+    top_placements = Placement.on_site.all().order_by('ctc')[0: 4]
+    data = {"basic": basic_data, "news": news, "programmes": programmes,"top_placements": top_placements}
     return render(request, template_name="index.html", context=data)
 
 
@@ -31,7 +33,7 @@ def contact(request):
         phone = request.POST["phone"]
         message = request.POST["message"]
         reciever = []
-        reciever.append("ra9853044@gmail.com")
+        reciever.append("atmproject.sem3@.com")
         send_mail(
             f"""
                 New query from  Website \n
