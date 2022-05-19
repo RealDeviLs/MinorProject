@@ -196,6 +196,84 @@
                                             <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
                                         </div>
                                     </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
+                                    <li class="py-5">
+                                        <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                            <h3 class="text-sm font-semibold text-gray-800">
+                                                <a href="{{ j.files.url }}" target="_blank"
+                                                    class="hover:underline focus:outline-none">
+                                                    <!-- Extend touch target to entire panel -->
+                                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                                    {{j.title}} ({{j.date}} - {{j.date_end}})
+                                                </a>
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600 line-clamp-2">{{j.description}}</p>
+                                        </div>
+                                    </li>
                                     {% endfor %}
                                     <!-- <li class="py-5">
                                         <div class="relative focus-within:ring-2 focus-within:ring-indigo-500">
@@ -375,33 +453,58 @@
                     </div>
                 </div>
                 <div class="flex flex-wrap">
-                    {% for i in top_placements %}
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{i.person.image.url}}"
+                            <img alt="..." src="https://i.ibb.co/YjTMKB7/Team4.png"
                                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
                             <div class="pt-6 text-center">
-                                <h5 class="text-xl font-bold">{{i.person.name}}</h5>
+                                <h5 class="text-xl font-bold">ABC XYZ</h5>
                                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                                    {{i.company}} (CTC- {{i.ctc}})
+                                    Amazon (4400000)
                                 </p>
-                                <!-- <div class="mt-6">
-                                    <button
-                                        class="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                                        type="button">
-                                        <i class="fab fa-twitter"></i></button><button
-                                        class="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                                        type="button">
-                                        <i class="fab fa-facebook-f"></i></button><button
-                                        class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
-                                        type="button">
-                                        <i class="fab fa-dribbble"></i>
-                                    </button>
-                                </div> -->
+
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                        <div class="px-6">
+                            <img alt="..." src="https://i.ibb.co/YjTMKB7/Team4.png"
+                                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+                            <div class="pt-6 text-center">
+                                <h5 class="text-xl font-bold">PQR XYZ</h5>
+                                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                                    Amazon (4400000)
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                        <div class="px-6">
+                            <img alt="..." src="https://i.ibb.co/YjTMKB7/Team4.png"
+                                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+                            <div class="pt-6 text-center">
+                                <h5 class="text-xl font-bold">MNO XYZ</h5>
+                                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                                    Microsoft (3300000)
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
+                        <div class="px-6">
+                            <img alt="..." src="https://i.ibb.co/YjTMKB7/Team4.png"
+                                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+                            <div class="pt-6 text-center">
+                                <h5 class="text-xl font-bold">GHI XYZ</h5>
+                                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                                    Oracle (2000000)
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
                     <!-- <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
                             <img alt="..." src="./assets/img/team-2-800x800.jpg"

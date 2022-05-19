@@ -20,12 +20,11 @@ def home_page(request):
     basic_data = WhiteLabel.on_site.first()
     news = DeptNews.on_site.all()
     programmes = AcademicProgram.on_site.all()
-    top_placements = Placement.on_site.all().order_by("ctc")[0:4]
+    # top_placements = Placement.on_site.all().order_by("ctc")[0:4]
     data = {
         "basic": basic_data,
         "news": news,
         "programmes": programmes,
-        "top_placements": top_placements,
     }
     return render(request, template_name="index.html", context=data)
 

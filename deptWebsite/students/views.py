@@ -73,7 +73,7 @@ def edit_basic_student(request, id):
 
     student = Student.on_site.filter(id=id).first()
     internships = Internship.objects.filter(person=student).all()
-    placements = Placement.on_site.filter(person=student).all()
+    placements = Placement.objects.filter(person=student).all()
     projects = Project.objects.filter(person=student).all()
 
     data = {
@@ -150,7 +150,7 @@ def add_placement(request, id):
 
 def edit_placement(request, id):
 
-    instance = Placement.on_site.filter(id=id).first()
+    instance = Placement.objects.filter(id=id).first()
     person_id = instance.person.id
     form = PlacementForm(instance=instance)
 
